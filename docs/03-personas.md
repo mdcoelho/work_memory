@@ -32,14 +32,14 @@ They are responsible for multiple threads at once. They often stop one piece of 
 
 This user may be a founder, consultant, manager, or senior individual contributor who owns many parallel workstreams.
 
-They need a reliable memory of work across clients, teams, projects, or responsibilities, but they do not want a heavy management system.
+They need a reliable memory of work across clients, teams, workstreams, or responsibilities, but they do not want a heavy management system.
 
 ### Core needs
 
 - Keep track of progress across shifting contexts.
 - Preserve enough detail to explain decisions later.
-- Build useful work logs without running timers.
-- Avoid losing client, team, or project context between sessions.
+- Build useful Work Logs without running timers.
+- Avoid losing client, team, or workstream context between sessions.
 
 ## Secondary persona: Focused specialist
 
@@ -65,3 +65,14 @@ Work Memory is not primarily for:
 - Users who want complex customization before simple capture.
 
 The product should serve people who need professional memory, not people looking for another management layer.
+
+## Validation gaps
+
+These personas are hypotheses. They need interviews and observed workdays before they can be treated as evidence.
+
+The most important unknowns are:
+
+- Which persona feels the pain most often.
+- Whether users will capture entries during real interruptions.
+- Whether users want personal memory before team visibility.
+- Which current tools they abandon when the product works.

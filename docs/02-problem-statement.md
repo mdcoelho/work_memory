@@ -14,7 +14,7 @@ People usually remember what they still need to do.
 
 They do not reliably remember what they actually did, what they decided, what changed, what they tried, or why a piece of work stopped.
 
-By the end of a busy day, a user may know they were productive but still struggle to reconstruct the day with confidence. This is especially painful when they need to resume work, report progress, prepare a handoff, or explain a decision.
+By the end of a busy day, a user may know they were productive but still struggle to reconstruct the day with confidence. This is painful when they need to resume work, report progress, prepare a handoff, or explain a decision.
 
 ## Why existing tools fail
 
@@ -24,7 +24,7 @@ Project management tools focus on coordination. They often add process, statuses
 
 Note tools can capture anything, but they often depend on the user choosing structure in advance.
 
-Timers measure duration, but they do not preserve meaning. A work log is more valuable than a timer because it records context, progress, and reasoning.
+Timers measure duration, but they do not preserve meaning. A Work Log is more valuable than a timer because it records context, progress, and reasoning.
 
 Work Memory must avoid these traps. It should preserve context without becoming another system the user has to manage.
 
@@ -41,6 +41,17 @@ Work Memory must avoid these traps. It should preserve context without becoming 
 
 Work Memory must optimize for fast capture, later organization, and context recovery.
 
-It should not require folders, classifications, projects, or workflows before the user can record what matters. Classification can happen later because preserving the raw context is more important than placing it perfectly.
+It should not require folders, classifications, projects, or workflows before the user can create an entry. Classification can happen later because preserving the raw context is more important than placing it perfectly.
 
 This problem defines the product boundary in [Product DNA](00-product-dna.md) and the user model in [Mental Model](04-mental-model.md).
+
+## Validation gaps
+
+The documentation assumes these problems are frequent and painful enough to support a product. That still needs evidence.
+
+The first validation work should test:
+
+- How often users lose useful context during a normal workday.
+- Whether fast entries are preferable to structured notes.
+- Whether Work Logs are more useful than timers for recall.
+- Whether AI assistance helps without becoming intrusive.

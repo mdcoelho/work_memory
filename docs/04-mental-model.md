@@ -4,11 +4,11 @@
 
 Work Memory is a professional memory layer.
 
-The user captures what happened as close to the moment as possible. The product helps them recover that context later, without forcing them to organize everything upfront.
+The user creates entries as close to the moment as possible. The product helps them recover context later, without forcing them to organize everything upfront.
 
 The core loop is:
 
-1. Capture what matters.
+1. Capture an entry.
 2. Continue working.
 3. Organize only when useful.
 4. Recover context when needed.
@@ -17,7 +17,7 @@ The core loop is:
 
 Capture is the most important behavior.
 
-A capture can be incomplete, messy, or temporary. It only needs to preserve enough context that the user can recover the thought later.
+An entry can be incomplete, messy, or temporary. It only needs to preserve enough context that the user can recover the thought later.
 
 The product should never block capture by asking the user to choose a project, folder, status, category, priority, or workflow. If capture slows down, the product loses its reason to exist.
 
@@ -37,11 +37,11 @@ Useful context includes what changed, what was decided, what was attempted, what
 
 A clean structure without context is not valuable. A rough capture with meaningful context is valuable.
 
-## Work log over timer
+## Work Log over timer
 
 A timer records duration.
 
-A work log records meaning.
+A Work Log records meaning.
 
 Work Memory should help the user understand the substance of their work, not just how long something took. Time can matter, but context matters more.
 
@@ -59,6 +59,6 @@ A task manager is organized around future obligations.
 
 Work Memory is organized around professional context. It helps the user remember what happened, recover momentum, and understand work across interruptions.
 
-The product may touch tasks when they naturally appear in context, but it must not become driven by backlogs, statuses, sprint boards, or process administration.
+Tasks may appear inside entries as part of context, but Work Memory must not manage them through backlogs, statuses, sprint boards, or process administration.
 
 This mental model supports the product boundaries in [Product DNA](00-product-dna.md), the ambition in [Vision](01-vision.md), and the user needs in [Personas](03-personas.md).

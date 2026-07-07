@@ -26,22 +26,22 @@ The product should make the user feel less dependent on memory and less anxious 
 
 - Capture must be faster than organization.
 - Context must be more important than folders.
-- Work logs must be more useful than timers.
+- Work Logs must be more useful than timers.
 - AI must reduce cognitive load without interrupting the user.
 - Simplicity must win over configurability.
 
 ## Experience standard
 
-Work Memory should feel faster than Things 3 for capture.
+Work Memory should feel faster than Things 3 for capture. This is an experience benchmark, not validated evidence.
 
-The user should be able to record context before the thought disappears. If the product requires setup, classification, or workflow decisions before capture, it has failed the core experience.
+The user should be able to create an entry before the thought disappears. If the product requires setup, classification, or workflow decisions before capture, it has failed the core experience.
 
 The interface should feel lightweight and direct. It should never feel like ClickUp, Jira, a CRM, or a wiki.
 
 ## Strategic boundary
 
-Work Memory is a personal and professional memory system for people who constantly change context.
+Work Memory is a professional memory system for people who constantly change context.
 
-It may help users understand obligations, but it must not be shaped around task management. Its primary value is preserving useful context from real work.
+It may help users notice obligations inside context, but it must not manage work as tasks, statuses, or workflows. Its primary value is preserving useful context from real work.
 
 See [Product DNA](00-product-dna.md) for the principles and [Mental Model](04-mental-model.md) for how users should understand the product.
