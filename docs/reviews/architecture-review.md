@@ -2,9 +2,9 @@
 
 ## Research status
 
-This review predates the research phase.
+This review predates the founder-observation rewrite.
 
-It is useful as an audit of documentation risks, but it is not user evidence. Product claims in this review should be checked against [Research Opportunities](../research/06-opportunities.md).
+It remains useful as an audit of documentation risks. Product claims in this review should be read with [Observed Patterns](../research/07-observed-patterns.md).
 
 ## Scope
 
@@ -26,7 +26,7 @@ The main risk was not technical. The main risk was conceptual drift.
 
 The docs were clear about what Work Memory is not: Jira, ClickUp, Notion, CRM, wiki, or project management software.
 
-They were less clear about the basic unit of the product. Without a shared object model, future contributors could turn the product into notes, tasks, folders, timers, or AI chat.
+They were less clear about the basic unit of the product. Without a shared object model, future contributors can turn the product into notes, tasks, folders, timers, or AI chat.
 
 Fix applied: introduced `Entry`, `Work Log`, `Context`, `Classification`, and `Recovery` as product terms in [Glossary](../10-glossary.md) and [Data Model](../07-data-model.md).
 
@@ -40,9 +40,9 @@ Fix applied: filled the empty docs with concise product-level decisions, not imp
 
 ### 3. AI was too broad
 
-The original docs said AI should reduce cognitive load, but did not define what AI may or may not do.
+The original docs said AI should reduce cognitive load, but did not define allowed and forbidden AI behavior.
 
-That was dangerous. AI could easily become the product's center, interrupt capture, or generate false certainty.
+That was dangerous. AI can become the product's center, interrupt capture, or generate false certainty.
 
 Fix applied: [AI](../08-ai.md) now defines allowed assistance, forbidden assistance, and validation gaps.
 

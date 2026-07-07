@@ -1,11 +1,5 @@
 # Problem Statement
 
-## Research status
-
-This problem statement is a hypothesis synthesized from prior documentation.
-
-The pains listed here must be validated through the questions in [User Pains](research/02-user-pains.md) and [Day in the Life](research/01-day-in-the-life.md).
-
 ## Core problem
 
 Knowledge workers lose the thread of their work.
@@ -32,7 +26,7 @@ Note tools can capture anything, but they often depend on the user choosing stru
 
 Timers measure duration, but they do not preserve meaning. A Work Log is more valuable than a timer because it records context, progress, and reasoning.
 
-Hypothesis: Work Memory should avoid these traps and preserve context without becoming another system the user has to manage.
+Work Memory should avoid these traps and preserve context without becoming another system the user has to manage.
 
 ## Cost of the problem
 
@@ -43,21 +37,14 @@ Hypothesis: Work Memory should avoid these traps and preserve context without be
 - Mental fatigue from holding too much context in memory.
 - Reduced confidence when returning to interrupted work.
 
-## Product implication hypothesis
+## Product implication
 
-Hypothesis: Work Memory should optimize for fast capture, later organization, and context recovery.
+Work Memory should optimize for fast capture, later organization, and context recovery.
 
 It should not require folders, classifications, projects, or workflows before the user can create an entry. Classification can happen later because preserving the raw context is more important than placing it perfectly.
 
 This problem defines the product boundary in [Product DNA](00-product-dna.md) and the user model in [Mental Model](04-mental-model.md).
 
-## Validation gaps
+## Research anchor
 
-The documentation assumes these problems are frequent and painful enough to support a product. That still needs evidence.
-
-The first validation work should test:
-
-- How often users lose useful context during a normal workday.
-- Whether fast entries are preferable to structured notes.
-- Whether Work Logs are more useful than timers for recall.
-- Whether AI assistance helps without becoming intrusive.
+The observed founder behavior behind this problem is documented in [Day in the Life](research/01-day-in-the-life.md), [User Pains](research/02-user-pains.md), and [Observed Patterns](research/07-observed-patterns.md).

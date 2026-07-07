@@ -1,155 +1,89 @@
 # Opportunities
 
-## Research status
+## Evidence base
 
-These are research opportunity areas, not product solutions.
+These opportunities are extracted from observed founder behavior documented in the repository.
 
-No feature should be built from this document without evidence from users.
+They are not feature proposals.
 
-## Opportunity 1: Understand context loss in real time
+## Opportunity 1: Preserve context at interruption time
 
-The repository assumes context loss happens during interruptions and multitasking.
+The founder loses professional context when interrupted.
 
-What to learn:
+The highest-leverage moment is the transition between one work fragment and the next. At that moment, the founder still knows what changed, what was tried, why the work paused, and where to resume.
 
-- When exactly context is lost.
-- What kind of context is lost.
-- Which losses create consequences.
-- Which losses users ignore.
+## Opportunity 2: Make completed work easier to recall
 
-Questions:
+The founder remembers future obligations better than completed work.
 
-- What was the last interruption that damaged work?
-- What did the user forget?
-- How did they recover?
-- What was the cost?
+The product space exists because completed work becomes hard to explain after a fragmented day.
 
-## Opportunity 2: Understand the difference between tasks and memory
+## Opportunity 3: Reduce reconstruction effort
 
-The repository repeatedly says the product is not a task manager.
+The founder reconstructs work from chat, calendar, files, documents, task lists, notes, and memory.
 
-What to learn:
+Reducing reconstruction effort matters because the founder repeatedly resumes work, explains progress, and prepares handoffs.
 
-- Whether users experience the pain as a task problem, memory problem, reporting problem, or coordination problem.
-- Whether task tools already provide enough history for some users.
-- Whether tasks need to appear only as context or as actionable objects.
+## Opportunity 4: Preserve reasoning
 
-Questions:
+The founder needs decisions and reasoning to survive context switches.
 
-- When users say "I need to remember work," do they mean tasks, decisions, progress, conversations, or time?
-- What do completed tasks fail to explain?
-- What task-like behavior would be useful but dangerous?
+Reasoning matters because repeated thinking wastes time and weakens explanations.
 
-## Opportunity 3: Understand Work Logs versus timers
+## Opportunity 5: Keep capture ahead of classification
 
-The repository assumes Work Logs are more useful than timers.
+The founder delays classification because interruption cost is higher than classification value.
 
-What to learn:
+Capture has to preserve the raw context first. Classification earns value only after the memory exists.
 
-- What users currently use timers for.
-- Whether duration is important for billing, accountability, reflection, or reporting.
-- Whether meaning without duration is enough.
+## Opportunity 6: Replace timer meaning gaps with Work Logs
 
-Questions:
+The founder values Work Logs over timers.
 
-- What did the user need the last time they checked a timer?
-- What did the timer fail to tell them?
-- What would have made the record useful?
+Elapsed time does not explain what happened, what changed, what was decided, or why progress matters.
 
-## Opportunity 4: Understand capture behavior
+## Opportunity 7: Use AI only to reduce cognitive load
 
-The repository assumes users will capture entries in seconds.
+The founder accepts AI as assistance, not as the center of the product.
 
-What to learn:
+AI earns trust when it reduces effort around captured context. AI loses trust when it interrupts capture, invents facts, or creates review work.
 
-- Whether users will stop during interruption to capture.
-- What makes capture feel too slow.
-- What minimum information is enough for later recovery.
+## Opportunity 8: Keep project management out of the core
 
-Questions:
+The founder works across many professional contexts, but the product must not become another Jira, ClickUp, CRM, wiki, or project management tool.
 
-- What would the user be willing to record in the moment?
-- What would they postpone?
-- What would they never capture?
+The opportunity is professional memory, not process administration.
 
-## Opportunity 5: Understand organization after capture
+## Opportunity 9: Support explanation and handoff
 
-The repository assumes classification can happen later.
+The founder needs to explain work performed.
 
-What to learn:
+Progress reporting and handoff require a record of decisions, blockers, reasoning, and changes, not only a list of open tasks.
 
-- Whether users can retrieve unclassified entries.
-- What structure they naturally add after the fact.
-- Whether classification creates clarity or maintenance burden.
+## Opportunity 10: Reduce cognitive fatigue from open threads
 
-Questions:
+The founder experiences fatigue from context switching rather than workload alone.
 
-- How would users look for an entry from last week?
-- Would they search by person, topic, artifact, date, decision, task, or outcome?
-- When does organization become bureaucracy?
+Reducing memory load is valuable because the founder carries many unfinished threads across the day.
 
-## Opportunity 6: Understand AI trust
+## Not opportunities
 
-The repository assumes AI can reduce cognitive load if it does not interrupt.
+The repository does not support these directions:
 
-What to learn:
+- Replacing Jira or ClickUp.
+- Building a CRM.
+- Building a wiki.
+- Building a timer-first product.
+- Building a status workflow system.
+- Building complex folder structures.
+- Making AI the main product surface.
 
-- Which AI outputs users trust.
-- Which AI outputs create review burden.
-- Whether users want AI to summarize, classify, connect, or stay out of the way.
+## Traceability
 
-Questions:
-
-- What would users allow AI to infer?
-- What must AI never invent?
-- How should uncertainty be shown?
-
-## Opportunity 7: Understand privacy and ownership
-
-The repository identifies privacy as a missing decision.
-
-What to learn:
-
-- What information users would hesitate to capture.
-- Whether professional memory is personal, team-owned, or company-owned.
-- Whether users expect export, deletion, and retention control.
-
-Questions:
-
-- What work context is too sensitive to save?
-- Who should be able to see the memory?
-- What would make the user trust the system?
-
-## Assumptions moved out of product decisions
-
-The following are not validated product decisions. They are assumptions to research.
-
-| Assumption | Questions to answer before product decisions |
-| --- | --- |
-| Work Memory should be faster than Things 3. | Do target users know this benchmark? What capture speed feels meaningfully faster than current behavior? |
-| The primary user is the context-switching knowledge worker. | Which user group has the most frequent and painful context loss? Which group is actively seeking a solution? |
-| Entries are the right basic unit. | Do users naturally think in entries, notes, events, decisions, work sessions, people, or artifacts? |
-| Work Logs are the right primary surface. | Do users want chronological recall, or do they recover work through people, topics, documents, or outcomes? |
-| Classification should happen after capture. | Does later classification improve retrieval, or does it become cleanup work users avoid? |
-| AI should summarize, classify, connect, or clarify. | Which AI assistance reduces effort without creating review burden or trust problems? |
-| Offline first matters to users. | When do users need access without network? Does offline behavior influence trust or adoption? |
-| Team workflows should be excluded by default. | Do users need private memory first, or does the pain only become valuable when shared? |
-| Users want a separate professional memory system. | Would users add another tool, or do they expect this job to be solved inside existing tools? |
-
-## What not to decide yet
-
-- Final feature set.
-- Technical architecture.
-- Data schema.
-- AI behavior.
-- Offline behavior.
-- Team or individual scope.
-- Pricing or packaging.
-- Integrations.
-- Visual design.
-
-## Research priority
-
-Start with observed work, not opinions.
-
-The most useful first study is a short diary or observation study where target users record interruptions, context switches, reconstruction moments, and end-of-day recall failures.
+- Interruption context: [Product DNA](../00-product-dna.md), [Problem Statement](../02-problem-statement.md).
+- Completed work recall: [Product DNA](../00-product-dna.md), [Vision](../01-vision.md).
+- Reconstruction effort: [Problem Statement](../02-problem-statement.md).
+- Capture before classification: [Mental Model](../04-mental-model.md), [User Flows](../05-user-flows.md).
+- Work Logs over timers: [Mental Model](../04-mental-model.md), [Features](../06-features.md).
+- AI boundaries: [AI](../08-ai.md).
+- Tool boundaries: [Product DNA](../00-product-dna.md), [Features](../06-features.md).

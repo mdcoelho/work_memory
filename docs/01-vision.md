@@ -1,12 +1,6 @@
 # Vision
 
-## Research status
-
-This vision is a hypothesis about the product direction.
-
-It should not be treated as validated strategy until the assumptions in [Job to Be Done](research/04-job-to-be-done.md) and [Opportunities](research/06-opportunities.md) are tested.
-
-## North star hypothesis
+## North star
 
 Work Memory should become the fastest way for a knowledge worker to preserve and recover professional context.
 
@@ -28,26 +22,26 @@ A good Work Memory helps the user understand progress, reconstruct decisions, pr
 
 The product should make the user feel less dependent on memory and less anxious about losing context.
 
-## Product stance hypotheses
+## Product stance
 
-- Hypothesis: capture should be faster than organization.
-- Hypothesis: context should be more important than folders.
-- Hypothesis: Work Logs should be more useful than timers.
-- Hypothesis: AI should reduce cognitive load without interrupting the user.
-- Hypothesis: simplicity should win over configurability.
+- Capture should be faster than organization.
+- Context should be more important than folders.
+- Work Logs should be more useful than timers.
+- AI should reduce cognitive load without interrupting the user.
+- Simplicity should win over configurability.
 
 ## Experience standard
 
-Work Memory should feel faster than Things 3 for capture. This is an experience benchmark, not validated evidence.
+Work Memory should feel faster than Things 3 for capture. Things 3 is the documented speed benchmark for the founder's capture experience.
 
 The user should be able to create an entry before the thought disappears. If the product requires setup, classification, or workflow decisions before capture, it has failed the core experience.
 
 The interface should feel lightweight and direct. It should never feel like ClickUp, Jira, a CRM, or a wiki.
 
-## Strategic boundary hypothesis
+## Strategic boundary
 
 Work Memory is a professional memory system for people who constantly change context.
 
-It may help users notice obligations inside context, but the current hypothesis is that it should not manage work as tasks, statuses, or workflows. Its assumed primary value is preserving useful context from real work.
+It can help users notice obligations inside context, but it should not manage work as tasks, statuses, or workflows. Its primary value is preserving useful context from real work.
 
 See [Product DNA](00-product-dna.md) for the principles and [Mental Model](04-mental-model.md) for how users should understand the product.

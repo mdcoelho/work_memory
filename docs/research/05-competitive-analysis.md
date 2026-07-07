@@ -1,85 +1,93 @@
 # Competitive Analysis
 
-## Research status
+## Evidence base
 
-This analysis is based only on categories and products mentioned in the repository.
+This document uses only competitors, tool categories, and reference points already present in the repository.
 
-No external market research, pricing review, feature audit, or user switching study has been performed.
+No market sizing, pricing, positioning, or external feature audit is included.
 
-## Competitive frame
+## Competitive reality
 
-The competition may not be another app with the same positioning.
+The founder's strongest competition is not a single product.
 
-The real competition may be the user's current reconstruction system: memory, chat search, calendar review, notes, task lists, documents, and time records.
+The strongest competition is the existing reconstruction stack:
 
-## Category analysis
+- Memory.
+- Chat search.
+- Calendar review.
+- Notes.
+- Documents.
+- Files.
+- Task lists.
+- Timers.
+- Project management systems.
 
-| Category | What users may hire it for | Where repository hypotheses say it fails | Key research question |
-| --- | --- | --- | --- |
-| Task managers | Future obligations, open loops, reminders, completion | They show what is pending but not what actually happened | Do users separate future obligations from work memory? |
-| Project management tools | Coordination, ownership, status, team process | They add bureaucracy and process overhead | Which exact project-management interactions feel too heavy for personal memory? |
-| Notes and wikis | Free-form capture, reference, documentation | They may require structure before capture or become hard to retrieve | Do notes fail because of capture, retrieval, upkeep, or user discipline? |
-| Timers | Duration, billing, accountability, productivity records | They preserve time but not meaning | When do users need meaning instead of elapsed time? |
-| Calendar | Meetings and scheduled commitments | It shows planned time, not necessarily what happened | Do users use calendars as reconstruction aids today? |
-| Chat | Requests, decisions, coordination | Useful context is buried in conversation | What useful memory is trapped in chat, and how often is it retrieved? |
-| CRM | Customer and pipeline context | It is not professional memory across all work | Are target users solving a broader memory problem or a narrower customer-context problem? |
-| AI tools | Summarization, synthesis, recall assistance | AI may interrupt, invent, or require review | What AI output would users trust for professional memory? |
-| Things 3 | Fast personal capture benchmark | It is a benchmark, not validated competitor evidence | What observable speed standard do users actually expect? |
+These tools already participate in the founder's workday. They also fragment the founder's professional memory.
 
-## Named tools in repository
+## Task managers
 
-### Jira and ClickUp
+Task managers preserve future obligations.
 
-These are used as negative references for process-heavy project management.
+They do not preserve enough evidence of completed work, decisions, reasoning, and context. This creates the gap between what the founder has to do and what the founder actually did.
 
-Research questions:
+## Project management systems
 
-- Which parts of these tools do users actually dislike?
-- Is the problem the tool, the organization's process, or the user's role?
-- Do users still rely on these tools for accountability?
+Jira and ClickUp represent the wrong product shape for Work Memory.
 
-### Notion and wikis
+They optimize for coordination, statuses, workflows, ownership, reporting overhead, and team process. The founder needs professional memory without process administration.
 
-These are used as negative references for knowledge bases and broad documentation.
+## Notes and wikis
 
-Research questions:
+Notion and wiki-like systems represent broad documentation and structured knowledge.
 
-- Do users currently use Notion or wiki tools as memory?
-- Do those tools fail at capture, retrieval, upkeep, or trust?
-- What information belongs in long-term documentation versus daily work memory?
+They can hold information, but they do not solve the founder's capture moment when context is disappearing during an interruption.
 
-### Things 3
+## Calendar
 
-Things 3 is used as a speed benchmark.
+Calendar shows planned time and meetings.
 
-Research questions:
+It helps reconstruct the day but does not show what actually happened, what changed, or why work paused.
 
-- Do target users know or use Things 3?
-- What does "faster than Things 3" mean in observable behavior?
-- Is speed the decisive quality, or is retrieval more important?
+## Chat
 
-## Competitive unknowns
+Chat contains requests, decisions, and coordination.
 
-- Which tool users would replace, if any.
-- Which workflow users would stop doing.
-- Whether users would add another tool to their workday.
-- Whether the strongest competitor is a habit, not software.
-- Whether professional memory is a category users understand.
-- Whether existing tools already solve this for a subset of users.
+It also buries context inside conversations. The founder has to search and interpret chat history to reconstruct work.
 
-## Assumptions and questions
+## Files and documents
 
-| Assumption | Questions to answer before product decisions |
-| --- | --- |
-| Existing tools fail because they are aimed at the wrong job. | Which current tool comes closest to solving the pain? Why is it insufficient? |
-| The product should avoid project management patterns. | Which project management patterns are harmful, and which are necessary for some users? |
-| Notes are insufficient. | What specific note-taking failure creates the pain? |
-| Timers are insufficient. | When is duration useful, and when is it irrelevant? |
-| AI tools are competitors or complements. | Do users already use AI to summarize work? What do they trust or reject? |
-| Users will understand "Work Memory." | What words do users use naturally for this problem? |
+Files and documents show artifacts.
 
-## Research stance
+They do not reliably explain reasoning, interruption state, or the next resume point.
 
-Do not build against competitors yet.
+## Timers
 
-First, identify what users currently do when they need to remember what happened.
+Timers record elapsed time.
+
+The founder values Work Logs over timers because remembering meaning is more useful than remembering duration alone.
+
+## AI tools
+
+AI tools can reduce cognitive load when they summarize, classify, connect, or clarify captured context.
+
+AI becomes a competitor to trust when it interrupts, invents facts, or creates review burden.
+
+## Things 3
+
+Things 3 is a speed benchmark for capture.
+
+The repository uses it to express the founder's speed standard: capture must feel extremely fast.
+
+## Competitive conclusion
+
+The founder does not need another planning surface.
+
+The founder needs a memory surface that explains completed work across interruptions, scattered tools, and overlapping workstreams.
+
+## Traceability
+
+- Negative category boundaries: [Product DNA](../00-product-dna.md), [Features](../06-features.md).
+- Existing tool landscape: [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md).
+- Work Logs over timers: [Mental Model](../04-mental-model.md), [Glossary](../10-glossary.md).
+- AI trust limits: [AI](../08-ai.md).
+- Things 3 benchmark: [Vision](../01-vision.md).

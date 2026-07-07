@@ -1,11 +1,5 @@
 # Roadmap
 
-## Research status
-
-This roadmap is a research sequence, not a product delivery plan.
-
-It exists to prevent premature product decisions.
-
 ## Scope
 
 This roadmap is a product-learning sequence, not a delivery plan.
@@ -40,10 +34,10 @@ No team workflows, dashboards, or task-management systems should be introduced i
 
 Add only assistance that makes the core loop faster or clearer.
 
-Candidates include summarization, later classification, and Work Log review. Hypothesis: AI should remain optional and non-interruptive.
+Candidates include summarization, later classification, and Work Log review. AI should remain optional and non-interruptive.
 
 ## Phase 3: Expand cautiously
 
 Expansion should happen only after the personal Work Memory loop is strong.
 
-Potential expansion areas must be validated before inclusion. Team visibility, integrations, or richer organization could easily make the product heavier and should be treated as risks, not inevitabilities.
+Potential expansion areas need explicit founder evidence before inclusion. Team visibility, integrations, or richer organization can make the product heavier and should be treated as risks, not inevitabilities.

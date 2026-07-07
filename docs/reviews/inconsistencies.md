@@ -2,13 +2,13 @@
 
 ## Research status
 
-This review predates the research phase.
+This review predates the founder-observation rewrite.
 
-It explains documentation inconsistencies. It does not validate the product model or terminology with users.
+It explains documentation inconsistencies. Read it with [Observed Patterns](../research/07-observed-patterns.md).
 
 ## Review result
 
-The original documentation had no fatal contradiction, but it had several ambiguity risks that could become contradictions during implementation.
+The original documentation had no fatal contradiction, but it had several ambiguity risks that can become contradictions during implementation.
 
 The main problem was repeated philosophy without controlled terminology.
 
@@ -50,7 +50,7 @@ Issue: AI was described as helpful but not constrained.
 
 Resolution: AI is now optional, non-interruptive assistance that may summarize, classify, connect, or clarify entries.
 
-Why introduced: without explicit AI boundaries, the product could become an AI workflow tool instead of a memory system.
+Why introduced: without explicit AI boundaries, the product can become an AI workflow tool instead of a memory system.
 
 ### Project language
 
@@ -80,7 +80,7 @@ This is not fixed because defining it would require a real product decision. It 
 
 The docs preserve "faster than Things 3" because it is an important experience signal.
 
-It remains unvalidated. The wording now states that it is a benchmark, not evidence.
+The wording now states that it is the documented benchmark for the founder's capture experience.
 
 ## Terminology after review
 

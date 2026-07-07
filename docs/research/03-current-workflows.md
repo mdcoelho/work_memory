@@ -1,12 +1,12 @@
 # Current Workflows
 
-## Research status
+## Evidence base
 
-This document describes workflows already implied by the repository.
+These workflows are extracted from repository documentation about the founder's current work behavior.
 
-It is not based on observed users. It should guide research into how users actually work today.
+## Tool environment
 
-## Tools mentioned or implied
+The founder's work context is distributed across:
 
 - Calendar.
 - Chat.
@@ -15,83 +15,84 @@ It is not based on observed users. It should guide research into how users actua
 - Task lists.
 - Notes.
 - Timers.
-- Project management tools.
+- Project management systems.
 - Wikis.
 - CRMs.
-- AI tools.
 
-The repository names Jira, ClickUp, Notion, Things 3, CRM, wiki, and timers as reference points, but it does not provide evidence about how target users use them.
+The repository uses Jira, ClickUp, Notion, Things 3, CRM, wiki, and timers as reference points. These references show the founder's tool landscape and the kinds of tools that currently shape work memory.
 
-## Implied workflow: reconstructing work
+## Workflow: reconstructing work
 
-The user appears to reconstruct work by searching across tools:
+The founder reconstructs work by moving across scattered evidence:
 
-1. Check calendar to remember meetings.
-2. Scan messages for requests and decisions.
-3. Open documents or files to remember activity.
-4. Check task lists for obligations.
-5. Use memory to fill gaps.
-6. Prepare an update, resume work, or hand off context.
+1. Calendar shows planned meetings and scheduled commitments.
+2. Chat shows requests, decisions, and interruptions.
+3. Files and documents show artifacts touched during work.
+4. Task lists show obligations and open loops.
+5. Notes hold fragments of context.
+6. Memory fills the gaps.
 
-This workflow is probably brittle because each tool holds a fragment, not the full meaning.
+The workflow is slow because no single surface explains what happened, why it mattered, and where work should resume.
 
-## Implied workflow: managing obligations
+## Workflow: explaining progress
 
-The user likely uses task lists or project management systems for what needs to happen.
+The founder explains progress by reconstructing completed work.
 
-The repository assumes those tools are weaker for remembering what already happened. That is plausible but not validated.
+The pain is not simply planning the next action. The pain is explaining what was already done across interrupted work fragments.
 
-## Implied workflow: capturing notes
+Progress reporting requires evidence of activity, decisions, blockers, changes, and reasoning.
 
-The user may use notes for context, but the repository assumes note-taking breaks down when structure is required too early.
+## Workflow: resuming work
 
-This needs validation. Note tools may fail because of search, discipline, retrieval, lack of reminders, weak templates, or because users do not capture in the first place.
+The founder resumes interrupted work by recovering context from memory and scattered tools.
 
-## Implied workflow: tracking time
+The founder needs to know:
 
-The user may use timers or time-tracking systems, but the repository assumes duration is less valuable than meaning.
+- What was being done.
+- What changed.
+- Why it mattered.
+- What was decided.
+- Where to continue.
 
-This may be true for recall but false for billing, accountability, productivity analysis, or management reporting.
+Task lists do not provide enough of this context because they focus on future obligations.
 
-## Implied workflow: using AI
+## Workflow: using task and project systems
 
-The user may want AI to summarize, classify, or clarify context.
+The founder works near task and project management systems but rejects their process weight as the core shape of Work Memory.
 
-The repository assumes AI should not interrupt capture. It also assumes AI can reduce cognitive load. Neither assumption has evidence yet.
+Jira and ClickUp represent the wrong product direction: process administration, statuses, workflows, and team bureaucracy.
 
-## Workflow breakdown points
+## Workflow: using notes and documents
 
-- Context is captured after the moment, if at all.
-- Work evidence is split across multiple tools.
-- Task systems preserve obligations but not reasoning.
-- Notes may be too unstructured or too demanding.
-- Timers preserve duration but not meaning.
-- AI may require review and create extra cognitive load.
-- Team tools may add bureaucracy around personal memory.
+The founder uses documents and notes as part of the reconstruction landscape.
 
-## Assumptions and questions
+Notes and documentation are not enough because they depend on either prior structure or later retrieval. Work Memory has to preserve context before it disappears.
 
-| Assumption | Questions to answer before product decisions |
-| --- | --- |
-| Users reconstruct context from many tools. | Which tools do they actually open when reconstructing yesterday? In what order? |
-| Task tools fail because they only track obligations. | How do users use completed tasks today? Do they already function as memory? |
-| Notes fail because they require structure. | What causes note failure: capture speed, organization, retrieval, trust, or habit? |
-| Timers fail because they lack meaning. | What jobs are timers currently hired for? Which of those jobs are not memory jobs? |
-| Project management tools feel bureaucratic. | Which exact interactions create bureaucracy? Are they tool problems or organization problems? |
-| Users want a separate memory system. | Would users adopt another tool, or do they want existing tools to work better? |
+## Workflow: using timers
 
-## Unknowns
+The founder distinguishes duration from meaning.
 
-- Current tool stack by persona.
-- Frequency of switching between tools.
-- Whether users already have personal work logs.
-- Whether the biggest pain is capture, retrieval, reporting, or coordination.
-- Whether any current workflow is "good enough."
+Timers record elapsed time. Work Logs record context, progress, and reasoning. The founder values meaning over duration for remembering completed work.
 
-## Research activities
+## Workflow: using AI
 
-- Ask users to reconstruct yesterday's work live.
-- Observe how users resume an interrupted task.
-- Map which tools contain which type of context.
-- Compare what users planned to do against what they actually did.
-- Ask users to show a recent progress update and trace how it was assembled.
+The founder accepts AI only when it reduces cognitive load.
+
+AI cannot interrupt capture, invent facts, require unnecessary review, or become the center of the product.
+
+## Workflow breaks
+
+- Work context lives across too many tools.
+- Existing task systems show pending work better than completed work.
+- Notes require too much organization or fail at retrieval.
+- Timers record duration without meaning.
+- Project management tools add process where the founder needs memory.
+- AI creates risk when it generates unsupported certainty.
+
+## Traceability
+
+- Reconstruction sources: [Product DNA](../00-product-dna.md).
+- Task/project system limits: [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md).
+- Notes and premature structure: [Problem Statement](../02-problem-statement.md).
+- Timers versus Work Logs: [Problem Statement](../02-problem-statement.md), [Mental Model](../04-mental-model.md).
+- AI boundaries: [AI](../08-ai.md).

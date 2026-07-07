@@ -1,122 +1,96 @@
 # Job to Be Done
 
-## Research status
+## Evidence base
 
-This document frames candidate jobs from repository hypotheses.
+This document translates repository observations into the founder's job to be done.
 
-No job has been validated with users.
+## Primary job
 
-## Candidate primary job
+When the founder's workday is fragmented by interruptions and shifting responsibilities, the founder needs to recover what actually happened and why it mattered, so work can be resumed, explained, or handed off without rebuilding context from scratch.
 
-When my workday is fragmented by interruptions and shifting responsibilities, I want to recover what actually happened and why it mattered, so I can resume, explain, or hand off work without rebuilding context from scratch.
+## Functional jobs
 
-This is a hypothesis, not a confirmed job.
+### Resume interrupted work
 
-## Candidate supporting jobs
+The founder returns to interrupted work and needs the prior context immediately:
 
-### Resume work
+- What was being done.
+- What changed.
+- Why it mattered.
+- What was decided.
+- Where to resume.
 
-When I return after an interruption, I want to understand where I left off, so I can continue without wasting mental energy.
+### Reconstruct completed work
 
-Questions:
+The founder needs to know what actually happened during the day.
 
-- What information is needed to resume?
-- How often does resuming fail today?
-- What does the user do when they cannot recover context?
+Completed work matters because the founder must understand progress, explain decisions, and avoid repeating thinking.
 
-### Reconstruct the day
+### Explain progress
 
-When the day is over or someone asks for an update, I want to know what I actually did, so I can explain progress accurately.
+The founder has to explain work performed.
 
-Questions:
-
-- Who asks for updates?
-- How often does the user prepare them?
-- What makes an update feel accurate?
+The explanation requires more than a list of tasks. It requires context, progress, blockers, and reasoning.
 
 ### Preserve reasoning
 
-When I make a decision or change direction, I want the reasoning to remain available, so I do not repeat thinking later.
+The founder makes decisions and changes direction across workstreams.
 
-Questions:
-
-- What reasoning is worth preserving?
-- How often do users repeat decisions because context is missing?
-- What level of detail is enough?
+The reasoning behind those decisions must remain available because it becomes expensive to reconstruct later.
 
 ### Reduce cognitive load
 
-When many work threads are open, I want less context in my head, so I can focus on the current work.
+The founder carries too many open threads in memory.
 
-Questions:
-
-- What does "cognitive load" mean to the user?
-- Is the load caused by memory, volume, ambiguity, responsibility, or tool switching?
-- What would make the user feel relief?
+The job is not to reduce workload. The job is to reduce the cognitive fatigue created by switching context while preserving professional memory.
 
 ### Prepare handoff
 
-When someone else needs context, I want to explain what happened and what matters, so the work can continue without me.
+The founder hands off work or context to others.
 
-Questions:
+Handoff quality drops when decisions, blockers, progress, and reasoning were not captured.
 
-- How often do handoffs happen?
-- What information is usually missing?
-- Is this a personal memory problem or a collaboration problem?
+## Emotional job
 
-## Forces of progress
+The founder needs confidence when returning to work.
 
-### Push forces
+The emotional outcome is relief from the pressure of keeping every thread in memory.
+
+## Social job
+
+The founder needs to explain work clearly to other people.
+
+This includes progress reporting, decision explanation, and handoff preparation.
+
+## Forces driving the job
 
 - Fragmented workdays.
 - Interruptions.
-- Scattered work evidence.
-- Difficulty remembering completed work.
-- Reporting and handoff pressure.
+- Multiple simultaneous workstreams.
+- Scattered evidence.
+- Reporting pressure.
+- Handoff pressure.
+- Cognitive fatigue.
 
-### Pull forces
+## Forces blocking the job
 
-- Confidence when resuming work.
-- Easier progress reporting.
-- Lower mental burden.
-- More reliable professional memory.
+- Task tools focus on future obligations.
+- Project management tools add process.
+- Notes require structure or fail at retrieval.
+- Timers record duration without meaning.
+- AI can add review burden.
+- Classification during capture slows the founder down.
 
-### Anxieties
+## What the founder hires memory for
 
-- Another tool to maintain.
-- Loss of privacy.
-- AI inventing or distorting context.
-- Capture slowing down real work.
-- Product becoming a task manager.
+The founder hires memory to preserve meaning.
 
-### Habits and inertia
+The job is not planning. The job is not time tracking. The job is not team process. The job is recovering professional context after work has been interrupted.
 
-- Existing task tools.
-- Notes.
-- Chat search.
-- Calendar review.
-- Memory.
-- Timers.
+## Traceability
 
-## Assumptions and questions
-
-| Assumption | Questions to answer before product decisions |
-| --- | --- |
-| The primary job is context recovery. | Is recovery the most painful moment, or is the pain reporting, planning, handoff, or accountability? |
-| Users value remembering completed work. | When did a user last need to remember completed work? What happened when they could not? |
-| Users want a personal memory layer. | Would users trust a personal tool, or do they need team-visible records? |
-| Users want to reduce cognitive load. | Which load is reducible by external memory, and which comes from workload itself? |
-| The job is frequent. | How many times per week does the job appear? |
-| The job has urgency. | What bad outcome happens if the job is not solved? |
-
-## Contradictions to investigate
-
-- Users may say they want less structure but later need structure for retrieval.
-- Users may reject task managers but still need task-like reminders.
-- Users may want AI help but distrust AI-generated work memory.
-
-## Research objective
-
-The next research step is to validate the job through real examples, not opinions.
-
-Ask users to describe the last time they had to reconstruct work, resume after interruption, or explain what happened.
+- Primary job: [Problem Statement](../02-problem-statement.md), [Vision](../01-vision.md).
+- Progress reporting: [Problem Statement](../02-problem-statement.md), [Personas](../03-personas.md).
+- Handoff: [Problem Statement](../02-problem-statement.md), [Data Model](../07-data-model.md).
+- Cognitive fatigue: [Problem Statement](../02-problem-statement.md).
+- Tool limits: [Product DNA](../00-product-dna.md), [Features](../06-features.md).

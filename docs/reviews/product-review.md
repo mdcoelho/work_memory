@@ -2,9 +2,9 @@
 
 ## Research status
 
-This review predates the research phase.
+This review predates the founder-observation rewrite.
 
-It identifies documentation and product-risk issues, not validated user needs. Treat its product claims as assumptions unless they are supported by research.
+It identifies documentation and product-risk issues. Read it with [Observed Patterns](../research/07-observed-patterns.md).
 
 ## Review standard
 
@@ -27,7 +27,7 @@ The revised documentation is simpler and more decision-ready, but the product st
 | `README.md` | Weak: said only "Under construction." Missing: product purpose, boundary, and where to start. | Rewritten as a concise repository entry point. |
 | `AGENTS.md` | Weak: good rules, but no shared terminology. Duplicated principles from Product DNA. Missing: review docs as source material. | Added core terminology and required reading of review docs. |
 | `docs/00-product-dna.md` | Strong philosophy, but repeated problem and vision content. Missing: the product's basic unit. Unvalidated: that context loss is frequent enough to support a product. | Tightened wording and added `Entry` as a non-negotiable concept. |
-| `docs/01-vision.md` | Strong ambition, but "faster than Things 3" was unvalidated. Potential contradiction: "personal and professional" blurred scope. | Kept the benchmark but labeled it unvalidated; clarified professional scope. |
+| `docs/01-vision.md` | Strong ambition, but "faster than Things 3" needed clearer status as an experience benchmark. Potential contradiction: "personal and professional" blurred scope. | Kept the benchmark and clarified professional scope. |
 | `docs/02-problem-statement.md` | Good framing, but lacked validation gaps. Duplicated Product DNA language. | Added validation gaps and aligned language with entries and Work Logs. |
 | `docs/03-personas.md` | Personas were plausible but generic. Missing: validation status. Assumption: users will capture during interruptions. | Added validation gaps and replaced project-heavy language with workstream language. |
 | `docs/04-mental-model.md` | Clear core loop, but task boundary was too loose. | Clarified that tasks may appear inside entries but are not managed as product objects. |
@@ -67,7 +67,7 @@ The duplication was reduced by making [Product DNA](../00-product-dna.md) the pr
 - Glossary.
 - Validation gaps.
 
-## Unvalidated assumptions
+## Observed risks
 
 - Users will capture entries during real interruptions.
 - Fast capture is more valuable than structured organization.

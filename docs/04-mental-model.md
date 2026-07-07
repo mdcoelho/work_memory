@@ -1,16 +1,10 @@
 # Mental Model
 
-## Research status
-
-This mental model is a hypothesis about how users may understand the product.
-
-It should be tested against actual current workflows before becoming product structure.
-
-## Simplest model hypothesis
+## Simplest model
 
 Work Memory is a professional memory layer.
 
-The user creates entries as close to the moment as possible. The product helps them recover context later, without forcing them to organize everything upfront.
+The founder creates entries close to the moment of work. The product helps recover context later, without forcing organization upfront.
 
 The core loop is:
 
@@ -55,16 +49,16 @@ Work Memory should help the user understand the substance of their work, not jus
 
 AI should reduce cognitive load.
 
-It may help summarize, classify, connect, or clarify captured context, but it should not interrupt the user or require extra decisions during capture.
+AI can help summarize, classify, connect, or clarify captured context, but it should not interrupt the user or require extra decisions during capture.
 
 AI is an assistant to memory, not the center of the product.
 
-## Task boundary hypothesis
+## Task boundary
 
 A task manager is organized around future obligations.
 
 Work Memory is organized around professional context. It helps the user remember what happened, recover momentum, and understand work across interruptions.
 
-Tasks may appear inside entries as part of context, but the current hypothesis is that Work Memory should not manage them through backlogs, statuses, sprint boards, or process administration.
+Tasks can appear inside entries as part of context, but Work Memory should not manage them through backlogs, statuses, sprint boards, or process administration.
 
 This mental model supports the product boundaries in [Product DNA](00-product-dna.md), the ambition in [Vision](01-vision.md), and the user needs in [Personas](03-personas.md).

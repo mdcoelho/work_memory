@@ -1,11 +1,5 @@
 # Data Model
 
-## Research status
-
-This is a working vocabulary, not a validated data model.
-
-The objects below should be treated as assumptions until user research confirms that they match how users think about their work.
-
 ## Scope
 
 This is a conceptual product model, not a database schema or technical architecture.
@@ -23,7 +17,7 @@ An entry should preserve:
 - What happened.
 - Why it mattered, if known.
 - What changed, if anything changed.
-- What the user may need when returning later.
+- What the founder needs when returning later.
 
 An entry is valid even if it is incomplete.
 
@@ -43,7 +37,7 @@ Context can include decisions, reasoning, blockers, open questions, progress, an
 
 Classification is optional organization applied after capture.
 
-Classification may help with retrieval, but it is not the product's primary value. The primary value is preserving context before it is lost.
+Classification can help with retrieval, but it is not the product's primary value. The primary value is preserving context before it is lost.
 
 ## Non-objects
 
@@ -57,4 +51,4 @@ The following should not be treated as primary product objects:
 - Pipeline stage.
 - Folder.
 
-They may appear inside entries as context, but the current assumption is that they should not define the product model.
+They can appear inside entries as context, but they should not define the product model.

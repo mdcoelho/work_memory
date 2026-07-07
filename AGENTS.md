@@ -6,11 +6,11 @@ Build the fastest and simplest Work Memory application.
 
 This repository is not for another project management tool. The product should help people capture what happened, recover context later, and keep work moving with minimal structure.
 
-## Research phase
+## First target user
 
-The current product documentation represents hypotheses, not validated facts.
+The first target user is the project founder.
 
-Before turning any product statement into implementation, check the research documents under `/docs/research`. If evidence is missing, treat the statement as an assumption and ask a research question instead of making a product decision.
+Research documents under `/docs/research` summarize observed founder behavior extracted from the repository. Use them before making product decisions.
 
 ## Core Principles
 
@@ -43,7 +43,7 @@ Core terminology must stay consistent:
 - Avoid unnecessary dependencies.
 - Prefer readability over cleverness.
 - Never implement features that are not documented.
-- Ask for clarification instead of making assumptions.
+- Ask for clarification instead of guessing.
 
 ## Forbidden
 

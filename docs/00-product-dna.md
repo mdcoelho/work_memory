@@ -1,11 +1,5 @@
 # Product DNA
 
-## Research status
-
-This document records the original product philosophy as a hypothesis.
-
-It is not user evidence. Read it with [Research Opportunities](research/06-opportunities.md) and [User Pains](research/02-user-pains.md) before treating any principle as a decision.
-
 ## Why this product exists
 
 Modern knowledge workers lose context because work rarely happens in a straight line.
@@ -33,7 +27,7 @@ A task manager organizes future commitments. Work Memory preserves professional 
 
 The product should feel like a fast memory layer: always available, easy to capture into, and useful when the user needs to resume, explain, decide, or hand off work. The long-term direction is described in [Vision](01-vision.md).
 
-## Principle hypotheses
+## Principles
 
 - Capture in seconds.
 - Organize later.
@@ -45,7 +39,7 @@ The product should feel like a fast memory layer: always available, easy to capt
 - The application should not feel bureaucratic.
 - Every interaction should save time.
 
-## Boundary hypotheses
+## Boundaries
 
 It is not:
 - Jira
@@ -55,6 +49,6 @@ It is not:
 - Wiki
 - Project management software
 
-Boundary hypothesis: Work Memory should not become another ClickUp or Jira. It should not optimize for process administration, complex workflows, status management, or team bureaucracy.
+Work Memory should not become another ClickUp or Jira. It should not optimize for process administration, complex workflows, status management, or team bureaucracy.
 
-Hypothesis: the purpose of Work Memory is to become the user's professional memory.
+The purpose of Work Memory is to become the founder's professional memory.

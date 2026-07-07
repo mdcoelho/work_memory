@@ -2,9 +2,9 @@
 
 ## Research status
 
-This document predates the research phase but remains relevant.
+This document predates the founder-observation rewrite but remains relevant.
 
-The missing decisions listed here should be answered through research before they become product or architecture decisions.
+The missing decisions listed here should be answered before they become product or architecture decisions.
 
 ## Purpose
 
