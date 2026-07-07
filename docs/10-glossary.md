@@ -2,7 +2,7 @@
 
 ## Work Memory
 
-A professional memory system for knowledge workers who constantly change context.
+A professional memory system for the founder's context-switching workday.
 
 It preserves what happened, why it mattered, and where work should resume.
 
@@ -16,13 +16,13 @@ An entry is the basic unit of the product.
 
 The chronological record of entries.
 
-The Work Log helps users reconstruct what actually happened during work.
+The Work Log helps the founder reconstruct what actually happened during work.
 
 ## Context
 
 The meaning that makes an entry useful later.
 
-Context may include decisions, progress, blockers, reasoning, changes, or unfinished state.
+Context includes decisions, progress, blockers, reasoning, changes, or unfinished state.
 
 ## Capture
 

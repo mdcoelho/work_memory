@@ -2,15 +2,15 @@
 
 ## Mission
 
-Build the fastest and simplest Work Memory application.
+Build the fastest and simplest Work Memory application for the founder.
 
-This repository is not for another project management tool. The product should help people capture what happened, recover context later, and keep work moving with minimal structure.
+This repository is not for another project management tool. The product should help the founder capture what happened, recover context later, and keep work moving with minimal structure.
 
 ## First target user
 
 The first target user is the project founder.
 
-Research documents under `/docs/research` summarize observed founder behavior extracted from the repository. Use them before making product decisions.
+Research documents under `/docs/research` and case documents under `/docs/cases` summarize observed founder behaviour extracted from the repository. Use them before making product decisions.
 
 ## Core Principles
 
@@ -26,9 +26,9 @@ Offline first is a product principle. Do not infer technical architecture from i
 
 ## Before writing code
 
-Before implementing anything, an AI agent must read the documentation under `/docs`, including research documents under `/docs/research` and review documents under `/docs/reviews`.
+Before implementing anything, an AI agent must read the documentation under `/docs`, including research documents under `/docs/research`, case documents under `/docs/cases`, and review documents under `/docs/reviews`.
 
-Use the documentation to understand the product direction, constraints, terminology, and planned behavior. If the documentation is incomplete or unclear, ask for clarification before writing code.
+Use the documentation to understand the product direction, constraints, terminology, and planned behaviour. If the documentation is incomplete or unclear, ask for clarification before writing code.
 
 Core terminology must stay consistent:
 

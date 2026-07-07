@@ -1,18 +1,20 @@
-# Personas
+# Founder Profile
 
-## Purpose of these personas
+## Purpose
 
-This document identifies the first target user.
+This file keeps the historical `personas` filename but no longer defines invented personas.
 
-The first target user is the project founder.
+The product is designed around one observed person: the project founder.
 
-## First target user: Project founder
+## Founder
 
 The founder spends the day moving between meetings, messages, documents, decisions, and partially finished work.
 
 The founder is responsible for multiple threads at once. The founder often stops one piece of work to respond to another, then returns later without the full context from before.
 
-### Core needs
+The founder's concrete work environment includes Outlook, Odoo, Fusion, suppliers, management questions, meetings, reporting, documents, and memory.
+
+## Core needs
 
 - Capture context in seconds.
 - Resume work after interruptions.
@@ -20,7 +22,7 @@ The founder is responsible for multiple threads at once. The founder often stops
 - Explain progress without reconstructing everything manually.
 - Preserve decisions, reasoning, and small outcomes that would otherwise disappear.
 
-### Pain points
+## Pain points
 
 - Work is scattered across too many places.
 - Important context is lost in chat, meetings, and memory.
@@ -28,40 +30,28 @@ The founder is responsible for multiple threads at once. The founder often stops
 - Reporting progress takes too long.
 - Existing tools feel heavier than the work they are meant to support.
 
-## Secondary persona: Independent operator
+## Behavioural modes
 
-The founder behaves like an independent operator who owns many parallel workstreams.
+### Independent operator
 
-The founder needs a reliable memory of work across clients, teams, workstreams, or responsibilities, but does not want a heavy management system.
+The founder behaves like an independent operator when owning many parallel workstreams across clients, teams, responsibilities, suppliers, and operational questions.
 
-### Core needs
+This mode requires reliable memory across shifting contexts without turning the product into a management system.
 
-- Keep track of progress across shifting contexts.
-- Preserve enough detail to explain decisions later.
-- Build useful Work Logs without running timers.
-- Avoid losing client, team, or workstream context between sessions.
+### Focused specialist
 
-## Secondary persona: Focused specialist
+The founder behaves like a focused specialist during deep work, especially when reasoning through technical or design state in Fusion.
 
-The founder also behaves like a focused specialist during deep work.
+This mode requires protecting the state of thinking so work can resume quickly after collaboration, meetings, supplier questions, or operational requests.
 
-The founder needs to protect the state of thinking so work can resume quickly after collaboration, meetings, or operational requests.
+## Non-target behaviours
 
-### Core needs
-
-- Capture unfinished thoughts before switching context.
-- Recover the reasoning behind prior work.
-- Separate useful context from noise.
-- Avoid spending energy maintaining a system.
-
-## Non-personas
-
-Work Memory is not primarily for:
+Work Memory is not primarily designed for:
 
 - Project administrators who need workflow enforcement.
 - Teams looking for a Jira or ClickUp replacement.
 - Sales teams looking for a CRM.
 - Organizations looking for a wiki.
-- Users who want complex customization before simple capture.
+- People who want complex customization before simple capture.
 
 The product should serve the founder's professional memory before expanding to other people.

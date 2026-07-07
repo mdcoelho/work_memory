@@ -2,7 +2,7 @@
 
 ## Why this product exists
 
-Modern knowledge workers lose context because work rarely happens in a straight line.
+The founder loses context because work rarely happens in a straight line.
 
 Their day is fragmented by meetings, messages, documents, decisions, urgent requests, and unfinished thoughts. They move between contexts before the previous context has been captured.
 
@@ -23,9 +23,9 @@ That reconstruction is slow, incomplete, and mentally expensive. The problem is 
 
 Build a Work Memory, not a task manager.
 
-A task manager organizes future commitments. Work Memory preserves professional context so users can understand what happened, recover momentum, and explain their work.
+A task manager organizes future commitments. Work Memory preserves professional context so the founder can understand what happened, recover momentum, and explain work performed.
 
-The product should feel like a fast memory layer: always available, easy to capture into, and useful when the user needs to resume, explain, decide, or hand off work. The long-term direction is described in [Vision](01-vision.md).
+The product should feel like a fast memory layer: always available, easy to capture into, and useful when the founder needs to resume, explain, decide, or hand off work. The long-term direction is described in [Vision](01-vision.md).
 
 ## Principles
 

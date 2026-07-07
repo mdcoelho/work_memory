@@ -1,12 +1,12 @@
 # Observed Patterns
 
 - The founder changes professional context throughout the day.
-- The founder works across meetings, messages, documents, decisions, urgent requests, operational questions, unfinished thoughts, and partially completed work.
+- The founder works across Outlook, Odoo, Fusion, meetings, suppliers, management questions, documents, decisions, urgent requests, operational questions, unfinished thoughts, and partially completed work.
 - The founder owns multiple simultaneous workstreams.
 - The founder remembers obligations more easily than completed work.
 - The founder loses professional context when interrupted.
 - The founder moves to another workstream before the previous context has been captured.
-- The founder reconstructs work from chat, calendar, files, documents, task lists, notes, and memory.
+- The founder reconstructs work from Outlook, Odoo, Fusion, calendar, files, documents, task lists, notes, and memory.
 - The founder reconstructs work to resume, explain progress, prepare handoffs, and understand decisions.
 - The founder experiences cognitive fatigue from holding too many open threads in memory.
 - The founder repeats thinking when prior context was not captured.
@@ -24,4 +24,7 @@
 - AI becomes harmful when it interrupts, invents facts, or requires extra review.
 - Handoffs become weaker when decisions and reasoning are missing.
 - Progress reporting becomes harder when work evidence is scattered.
+- Management questions interrupt execution and trigger reconstruction.
+- Supplier questions force movement between Outlook, Odoo, and Fusion.
+- The same software window can show the object of work without explaining the current work context.
 - The founder needs professional memory more than another planning system.

@@ -2,7 +2,7 @@
 
 ## Evidence base
 
-These opportunities are extracted from observed founder behavior documented in the repository.
+These opportunities are extracted from observed founder behaviour documented in the repository.
 
 They are not feature proposals.
 
@@ -20,7 +20,7 @@ The product space exists because completed work becomes hard to explain after a 
 
 ## Opportunity 3: Reduce reconstruction effort
 
-The founder reconstructs work from chat, calendar, files, documents, task lists, notes, and memory.
+The founder reconstructs work from Outlook, Odoo, Fusion, calendar, files, documents, task lists, notes, and memory.
 
 Reducing reconstruction effort matters because the founder repeatedly resumes work, explains progress, and prepares handoffs.
 
@@ -58,7 +58,7 @@ The opportunity is professional memory, not process administration.
 
 The founder needs to explain work performed.
 
-Progress reporting and handoff require a record of decisions, blockers, reasoning, and changes, not only a list of open tasks.
+Progress reporting, management questions, and handoff require a record of decisions, blockers, reasoning, and changes, not only a list of open tasks.
 
 ## Opportunity 10: Reduce cognitive fatigue from open threads
 
@@ -87,3 +87,4 @@ The repository does not support these directions:
 - Work Logs over timers: [Mental Model](../04-mental-model.md), [Features](../06-features.md).
 - AI boundaries: [AI](../08-ai.md).
 - Tool boundaries: [Product DNA](../00-product-dna.md), [Features](../06-features.md).
+- Behavioural case detail: [Product Opportunities](../cases/07-product-opportunities.md).

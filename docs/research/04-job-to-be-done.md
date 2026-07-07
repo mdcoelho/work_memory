@@ -90,7 +90,7 @@ The job is not planning. The job is not time tracking. The job is not team proce
 ## Traceability
 
 - Primary job: [Problem Statement](../02-problem-statement.md), [Vision](../01-vision.md).
-- Progress reporting: [Problem Statement](../02-problem-statement.md), [Personas](../03-personas.md).
+- Progress reporting: [Problem Statement](../02-problem-statement.md), [Founder Profile](../03-personas.md).
 - Handoff: [Problem Statement](../02-problem-statement.md), [Data Model](../07-data-model.md).
 - Cognitive fatigue: [Problem Statement](../02-problem-statement.md).
 - Tool limits: [Product DNA](../00-product-dna.md), [Features](../06-features.md).

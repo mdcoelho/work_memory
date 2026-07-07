@@ -8,7 +8,7 @@ It explains documentation inconsistencies. Read it with [Observed Patterns](../r
 
 ## Review result
 
-The original documentation had no fatal contradiction, but it had several ambiguity risks that can become contradictions during implementation.
+The original documentation had no fatal contradiction, but it had several ambiguity risks that can become contradictions during product design.
 
 The main problem was repeated philosophy without controlled terminology.
 
@@ -26,7 +26,7 @@ Issue: The docs used capture language but did not name what was being captured.
 
 Resolution: Introduced `Entry` as the basic unit of Work Memory.
 
-Why introduced: contributors need one shared word for the thing the user creates.
+Why introduced: contributors need one shared word for the thing the founder creates.
 
 ### Work Log versus timer
 
@@ -66,7 +66,7 @@ Issue: Empty numbered docs contradicted the rule that documentation is the sourc
 
 Resolution: Added concise product-level content to each empty document.
 
-Why introduced: decisions must be visible before implementation.
+Why introduced: decisions must be visible before product work begins.
 
 ## Remaining unresolved tension
 

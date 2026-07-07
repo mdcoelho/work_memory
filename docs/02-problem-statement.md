@@ -2,31 +2,31 @@
 
 ## Core problem
 
-Knowledge workers lose the thread of their work.
+The founder loses the thread of work.
 
-They are interrupted, redirected, pulled into meetings, asked questions, and forced to switch tools throughout the day. Each context switch creates a small gap between what happened and what they can later remember.
+The founder is interrupted, redirected, pulled into meetings, asked questions, and forced to switch between Outlook, Odoo, Fusion, documents, suppliers, management questions, and memory throughout the day. Each context switch creates a small gap between what happened and what can later be remembered.
 
 The product exists because those gaps accumulate.
 
 ## User reality
 
-People usually remember what they still need to do.
+The founder usually remembers what still needs to be done.
 
-They do not reliably remember what they actually did, what they decided, what changed, what they tried, or why a piece of work stopped.
+The founder does not reliably remember what actually happened, what was decided, what changed, what was tried, or why a piece of work stopped.
 
-By the end of a busy day, a user may know they were productive but still struggle to reconstruct the day with confidence. This is painful when they need to resume work, report progress, prepare a handoff, or explain a decision.
+By the end of a busy day, the founder can know work happened but still struggle to reconstruct the day with confidence. This is painful when resuming work, reporting progress, preparing a handoff, or explaining a decision.
 
 ## Why existing tools fail
 
-Task managers focus on future work. They help users list commitments, deadlines, and open loops.
+Task managers focus on future work. They help list commitments, deadlines, and open loops.
 
 Project management tools focus on coordination. They often add process, statuses, ownership rules, and reporting overhead.
 
-Note tools can capture anything, but they often depend on the user choosing structure in advance.
+Note tools can capture anything, but they often depend on choosing structure in advance.
 
 Timers measure duration, but they do not preserve meaning. A Work Log is more valuable than a timer because it records context, progress, and reasoning.
 
-Work Memory should avoid these traps and preserve context without becoming another system the user has to manage.
+Work Memory should avoid these traps and preserve context without becoming another system the founder has to manage.
 
 ## Cost of the problem
 
@@ -41,10 +41,10 @@ Work Memory should avoid these traps and preserve context without becoming anoth
 
 Work Memory should optimize for fast capture, later organization, and context recovery.
 
-It should not require folders, classifications, projects, or workflows before the user can create an entry. Classification can happen later because preserving the raw context is more important than placing it perfectly.
+It should not require folders, classifications, projects, or workflows before the founder can create an entry. Classification can happen later because preserving the raw context is more important than placing it perfectly.
 
-This problem defines the product boundary in [Product DNA](00-product-dna.md) and the user model in [Mental Model](04-mental-model.md).
+This problem defines the product boundary in [Product DNA](00-product-dna.md) and the founder model in [Mental Model](04-mental-model.md).
 
 ## Research anchor
 
-The observed founder behavior behind this problem is documented in [Day in the Life](research/01-day-in-the-life.md), [User Pains](research/02-user-pains.md), and [Observed Patterns](research/07-observed-patterns.md).
+The observed founder behaviour behind this problem is documented in [Day in the Life](research/01-day-in-the-life.md), [Real Day](cases/01-real-day.md), [User Pains](research/02-user-pains.md), and [Observed Patterns](research/07-observed-patterns.md).

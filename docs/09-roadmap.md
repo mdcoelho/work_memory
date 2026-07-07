@@ -6,38 +6,33 @@ This roadmap is a product-learning sequence, not a delivery plan.
 
 No dates, teams, or implementation commitments are defined here.
 
-## Phase 0: Validate the problem
+## Phase 0: Model the founder's real day
 
-Prove that context loss is frequent, painful, and worth solving.
+Preserve the behavioural cases as the design source of truth.
 
-Validation questions:
+Focus on Outlook, Odoo, Fusion, suppliers, management questions, meetings, reporting, and recovery.
 
-- Do users lose useful work context during normal days?
-- Do they care more about what happened than how long it took?
-- Do fast entries beat structured notes in real interruptions?
-- Which persona has the strongest pain?
+The product should stay grounded in [Real Day](cases/01-real-day.md), [Context Switches](cases/02-context-switches.md), [Reporting](cases/03-reporting.md), and [Recovery](cases/05-recovery.md).
 
-## Phase 1: Prove the core loop
+## Phase 1: Prove the founder's core loop
 
-Prove that users can capture entries quickly and recover context later.
+Prove the loop against the founder's actual workday:
 
-The core loop is:
-
-1. Capture an entry.
+1. Capture an entry during or immediately after interruption.
 2. Continue working.
 3. Review the Work Log.
-4. Recover context.
+4. Recover context for reporting, supplier follow-up, Odoo checks, Fusion work, or management questions.
 
 No team workflows, dashboards, or task-management systems should be introduced in this phase.
 
 ## Phase 2: Add useful assistance
 
-Add only assistance that makes the core loop faster or clearer.
+Add only assistance that makes the founder faster or clearer.
 
-Candidates include summarization, later classification, and Work Log review. AI should remain optional and non-interruptive.
+Candidate areas include summarization, later classification, and Work Log review. AI should remain optional and non-interruptive.
 
 ## Phase 3: Expand cautiously
 
-Expansion should happen only after the personal Work Memory loop is strong.
+Expansion should happen only after the founder's Work Memory loop is strong.
 
-Potential expansion areas need explicit founder evidence before inclusion. Team visibility, integrations, or richer organization can make the product heavier and should be treated as risks, not inevitabilities.
+Potential expansion areas need direct founder evidence before inclusion. Team visibility, integrations, or richer organization can make the product heavier and should be treated as risks, not inevitabilities.

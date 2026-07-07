@@ -2,9 +2,9 @@
 
 ## Research status
 
-This document predates the founder-observation rewrite but remains relevant.
+This document predates the founder-observation rewrite and has been updated to use the founder as the first target user.
 
-The missing decisions listed here should be answered before they become product or architecture decisions.
+The missing decisions listed here should be answered before they become product decisions.
 
 ## Purpose
 
@@ -12,13 +12,15 @@ This document lists decisions that remain open after the review.
 
 They are not defects. They are decisions that should not be guessed by an AI agent or engineer.
 
-## Product validation decisions
+## Founder-behaviour decisions
 
 ### Primary user
 
-Decision needed: Which persona has the strongest pain and should be served first?
+Decision made: The first target user is the project founder.
 
-Why it matters: the current personas are hypotheses. Building for all of them would dilute the product.
+Remaining decision: Which founder scenario should anchor the first product experience: reporting, Fusion recovery, supplier follow-up, management questions, or Odoo checks?
+
+Why it matters: solving all founder scenarios at once can still dilute the product.
 
 ### Capture-speed threshold
 
@@ -28,17 +30,17 @@ Why it matters: "fast" is not a product requirement until it has a measurable th
 
 ### Work Log value
 
-Decision needed: What evidence proves that Work Logs are more useful than timers for the target user?
+Decision needed: What founder reporting or recovery moment proves that a Work Log is more useful than a timer?
 
-Why it matters: this is a central product belief and must be validated.
+Why it matters: the founder values meaning over duration, but the product must make that value concrete in behaviour.
 
 ## Product boundary decisions
 
 ### Offline first
 
-Decision needed: What user experience must work offline?
+Decision needed: What founder experience must work offline?
 
-Why it matters: offline first can affect product scope, data ownership, sync expectations, and architecture. It should not be interpreted casually.
+Why it matters: offline first can affect product scope, data ownership, and trust. It should not be interpreted casually.
 
 ### Task relationship
 
@@ -56,7 +58,7 @@ Why it matters: too little structure may hurt recovery; too much structure will 
 
 ### AI trust boundary
 
-Decision needed: How should users review, accept, reject, or ignore AI suggestions?
+Decision needed: How should the founder review, accept, reject, or ignore AI suggestions?
 
 Why it matters: AI must reduce cognitive load, not create a second review workload.
 
@@ -72,17 +74,17 @@ Why it matters: Work Memory should not depend on AI to justify its core loop.
 
 Decision needed: What privacy expectations does a professional memory product make explicit?
 
-Why it matters: users may capture sensitive client, company, or personal work context.
+Why it matters: the founder captures sensitive client, company, supplier, and personal work context.
 
 ### Export and portability
 
-Decision needed: Can users export their entries and Work Logs?
+Decision needed: Can the founder export entries and Work Logs?
 
 Why it matters: professional memory should not become a locked-in black box.
 
 ### Retention
 
-Decision needed: Does Work Memory preserve everything forever, or does the user control retention?
+Decision needed: Does Work Memory preserve everything forever, or does the founder control retention?
 
 Why it matters: memory products need a clear stance on accumulation, deletion, and trust.
 

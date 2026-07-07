@@ -1,10 +1,10 @@
-# Data Model
+# Conceptual Model
 
 ## Scope
 
-This is a conceptual product model, not a database schema or technical architecture.
+This is a conceptual product model, not a storage or system design.
 
-The purpose is to keep product language consistent before implementation decisions exist.
+The purpose is to keep product language consistent before build decisions exist.
 
 ## Core objects
 
@@ -25,7 +25,7 @@ An entry is valid even if it is incomplete.
 
 A Work Log is the chronological record of entries.
 
-The Work Log is the user's evidence of what actually happened during work. It should be useful for recall, status updates, handoffs, and resuming after interruptions.
+The Work Log is the founder's evidence of what actually happened during work. It should be useful for recall, status updates, handoffs, and resuming after interruptions.
 
 ### Context
 

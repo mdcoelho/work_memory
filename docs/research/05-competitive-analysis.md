@@ -13,13 +13,15 @@ The founder's strongest competition is not a single product.
 The strongest competition is the existing reconstruction stack:
 
 - Memory.
-- Chat search.
+- Outlook search.
 - Calendar review.
 - Notes.
 - Documents.
 - Files.
 - Task lists.
 - Timers.
+- Odoo record review.
+- Fusion model review.
 - Project management systems.
 
 These tools already participate in the founder's workday. They also fragment the founder's professional memory.
@@ -54,6 +56,24 @@ Chat contains requests, decisions, and coordination.
 
 It also buries context inside conversations. The founder has to search and interpret chat history to reconstruct work.
 
+## Outlook
+
+Outlook contains supplier messages, management questions, meeting changes, and communication trails.
+
+It does not connect those messages to Odoo state, Fusion reasoning, or the founder's interrupted work context.
+
+## Odoo
+
+Odoo contains business state.
+
+It does not explain why the founder entered a record, which supplier question triggered the check, or what answer needs to return to Outlook.
+
+## Fusion
+
+Fusion contains technical and design state.
+
+It does not preserve the supplier, Odoo, management, or reporting context around the model.
+
 ## Files and documents
 
 Files and documents show artifacts.
@@ -87,7 +107,7 @@ The founder needs a memory surface that explains completed work across interrupt
 ## Traceability
 
 - Negative category boundaries: [Product DNA](../00-product-dna.md), [Features](../06-features.md).
-- Existing tool landscape: [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md).
+- Existing tool landscape: [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md), [Real Day](../cases/01-real-day.md).
 - Work Logs over timers: [Mental Model](../04-mental-model.md), [Glossary](../10-glossary.md).
 - AI trust limits: [AI](../08-ai.md).
 - Things 3 benchmark: [Vision](../01-vision.md).
