@@ -1,5 +1,11 @@
 # Inconsistencies
 
+## Research status
+
+This review predates the research phase.
+
+It explains documentation inconsistencies. It does not validate the product model or terminology with users.
+
 ## Review result
 
 The original documentation had no fatal contradiction, but it had several ambiguity risks that could become contradictions during implementation.

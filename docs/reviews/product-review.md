@@ -1,5 +1,11 @@
 # Product Review
 
+## Research status
+
+This review predates the research phase.
+
+It identifies documentation and product-risk issues, not validated user needs. Treat its product claims as assumptions unless they are supported by research.
+
 ## Review standard
 
 This review assumes the product is being evaluated before a EUR 10M investment.

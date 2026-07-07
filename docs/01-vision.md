@@ -1,6 +1,12 @@
 # Vision
 
-## North star
+## Research status
+
+This vision is a hypothesis about the product direction.
+
+It should not be treated as validated strategy until the assumptions in [Job to Be Done](research/04-job-to-be-done.md) and [Opportunities](research/06-opportunities.md) are tested.
+
+## North star hypothesis
 
 Work Memory should become the fastest way for a knowledge worker to preserve and recover professional context.
 
@@ -22,13 +28,13 @@ A good Work Memory helps the user understand progress, reconstruct decisions, pr
 
 The product should make the user feel less dependent on memory and less anxious about losing context.
 
-## Product stance
+## Product stance hypotheses
 
-- Capture must be faster than organization.
-- Context must be more important than folders.
-- Work Logs must be more useful than timers.
-- AI must reduce cognitive load without interrupting the user.
-- Simplicity must win over configurability.
+- Hypothesis: capture should be faster than organization.
+- Hypothesis: context should be more important than folders.
+- Hypothesis: Work Logs should be more useful than timers.
+- Hypothesis: AI should reduce cognitive load without interrupting the user.
+- Hypothesis: simplicity should win over configurability.
 
 ## Experience standard
 
@@ -38,10 +44,10 @@ The user should be able to create an entry before the thought disappears. If the
 
 The interface should feel lightweight and direct. It should never feel like ClickUp, Jira, a CRM, or a wiki.
 
-## Strategic boundary
+## Strategic boundary hypothesis
 
 Work Memory is a professional memory system for people who constantly change context.
 
-It may help users notice obligations inside context, but it must not manage work as tasks, statuses, or workflows. Its primary value is preserving useful context from real work.
+It may help users notice obligations inside context, but the current hypothesis is that it should not manage work as tasks, statuses, or workflows. Its assumed primary value is preserving useful context from real work.
 
 See [Product DNA](00-product-dna.md) for the principles and [Mental Model](04-mental-model.md) for how users should understand the product.

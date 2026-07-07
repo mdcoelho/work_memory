@@ -1,22 +1,28 @@
 # Features
 
+## Research status
+
+This document lists capability assumptions.
+
+It is not a feature commitment. Each item needs evidence from [Opportunities](research/06-opportunities.md) before it can become a product decision.
+
 ## Product boundary
 
 This document defines allowed product capabilities. It is not a PRD and does not describe implementation.
 
-Every feature must serve one of three outcomes:
+Any future feature should be tested against one of three hypothesized outcomes:
 
 - Capture context quickly.
 - Recover context later.
 - Reduce the cognitive load of remembering work.
 
-## Core capabilities
+## Capability assumptions
 
 ### Fast entry capture
 
-The user must be able to create an entry before the thought disappears.
+Hypothesis: the user needs to create an entry before the thought disappears.
 
-This is the primary product capability and the standard against which all other features are judged.
+Hypothesis: this is the primary product capability and the standard against which other capabilities should be judged.
 
 ### Work Log
 
@@ -26,7 +32,7 @@ The Work Log is more important than timers because it preserves meaning, not onl
 
 ### Context recovery
 
-The product must help the user recover what happened, why it mattered, and where to resume.
+Hypothesis: the product should help the user recover what happened, why it mattered, and where to resume.
 
 Recovery is the reason capture has value.
 
@@ -34,17 +40,17 @@ Recovery is the reason capture has value.
 
 The product may support classification after capture.
 
-Classification must never be required before an entry exists.
+Hypothesis: classification should not be required before an entry exists.
 
 ### AI assistance
 
 AI may summarize, classify, connect, or clarify entries when it reduces cognitive load.
 
-AI must not become a required step in capture.
+Hypothesis: AI should not become a required step in capture.
 
-## Explicit non-features
+## Boundary assumptions
 
-Work Memory must not include these by default:
+Boundary hypothesis: Work Memory should not include these by default:
 
 - Boards.
 - Sprints.

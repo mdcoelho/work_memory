@@ -1,5 +1,11 @@
 # Architecture Review
 
+## Research status
+
+This review predates the research phase.
+
+It is useful as an audit of documentation risks, but it is not user evidence. Product claims in this review should be checked against [Research Opportunities](../research/06-opportunities.md).
+
 ## Scope
 
 This review covers product architecture and documentation architecture.

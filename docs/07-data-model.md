@@ -1,5 +1,11 @@
 # Data Model
 
+## Research status
+
+This is a working vocabulary, not a validated data model.
+
+The objects below should be treated as assumptions until user research confirms that they match how users think about their work.
+
 ## Scope
 
 This is a conceptual product model, not a database schema or technical architecture.
@@ -51,4 +57,4 @@ The following should not be treated as primary product objects:
 - Pipeline stage.
 - Folder.
 
-They may appear inside entries as context, but they must not define the product model.
+They may appear inside entries as context, but the current assumption is that they should not define the product model.

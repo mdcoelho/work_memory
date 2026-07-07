@@ -6,6 +6,12 @@ Build the fastest and simplest Work Memory application.
 
 This repository is not for another project management tool. The product should help people capture what happened, recover context later, and keep work moving with minimal structure.
 
+## Research phase
+
+The current product documentation represents hypotheses, not validated facts.
+
+Before turning any product statement into implementation, check the research documents under `/docs/research`. If evidence is missing, treat the statement as an assumption and ask a research question instead of making a product decision.
+
 ## Core Principles
 
 - Capture first. Organize later.
@@ -20,7 +26,7 @@ Offline first is a product principle. Do not infer technical architecture from i
 
 ## Before writing code
 
-Before implementing anything, an AI agent must read the documentation under `/docs`, including review documents under `/docs/reviews`.
+Before implementing anything, an AI agent must read the documentation under `/docs`, including research documents under `/docs/research` and review documents under `/docs/reviews`.
 
 Use the documentation to understand the product direction, constraints, terminology, and planned behavior. If the documentation is incomplete or unclear, ask for clarification before writing code.
 

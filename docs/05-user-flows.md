@@ -1,10 +1,16 @@
 # User Flows
 
+## Research status
+
+These are hypothesized flows, not validated user behavior.
+
+They should be tested through observation before becoming product requirements.
+
 ## Purpose
 
 These flows describe the product behavior at a product level. They are not implementation requirements.
 
-Each flow must protect the same rule: capture first, organize later.
+Each flow should test the same assumption: capture first, organize later.
 
 ## Flow 1: Capture during interruption
 

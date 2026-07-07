@@ -1,10 +1,16 @@
 # Personas
 
+## Research status
+
+These personas are hypotheses.
+
+They must be validated through interviews, observed workdays, and workflow reconstruction before they guide product decisions.
+
 ## Purpose of these personas
 
-These personas describe the people Work Memory must serve first.
+These personas describe the people Work Memory may need to serve first.
 
-They are not market segments or sales categories. They are product lenses for understanding who loses context, why it matters, and what kind of experience the product must protect.
+They are not market segments or sales categories. They are product lenses for understanding who loses context, why it matters, and what kind of experience the product may need to protect.
 
 ## Primary persona: Context-switching knowledge worker
 

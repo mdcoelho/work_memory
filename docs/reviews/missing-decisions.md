@@ -1,5 +1,11 @@
 # Missing Decisions
 
+## Research status
+
+This document predates the research phase but remains relevant.
+
+The missing decisions listed here should be answered through research before they become product or architecture decisions.
+
 ## Purpose
 
 This document lists decisions that remain open after the review.

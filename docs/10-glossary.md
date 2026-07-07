@@ -1,5 +1,11 @@
 # Glossary
 
+## Research status
+
+This is a working glossary for research and discussion.
+
+Terms may change after user interviews and workflow observation.
+
 ## Work Memory
 
 A professional memory system for knowledge workers who constantly change context.
@@ -34,7 +40,7 @@ Capture happens before organization.
 
 Optional organization applied after capture.
 
-Classification can help retrieval, but it must not block entry creation.
+Classification can help retrieval, but the current hypothesis is that it should not block entry creation.
 
 ## Recovery
 

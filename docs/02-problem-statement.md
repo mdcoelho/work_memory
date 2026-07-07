@@ -1,5 +1,11 @@
 # Problem Statement
 
+## Research status
+
+This problem statement is a hypothesis synthesized from prior documentation.
+
+The pains listed here must be validated through the questions in [User Pains](research/02-user-pains.md) and [Day in the Life](research/01-day-in-the-life.md).
+
 ## Core problem
 
 Knowledge workers lose the thread of their work.
@@ -26,7 +32,7 @@ Note tools can capture anything, but they often depend on the user choosing stru
 
 Timers measure duration, but they do not preserve meaning. A Work Log is more valuable than a timer because it records context, progress, and reasoning.
 
-Work Memory must avoid these traps. It should preserve context without becoming another system the user has to manage.
+Hypothesis: Work Memory should avoid these traps and preserve context without becoming another system the user has to manage.
 
 ## Cost of the problem
 
@@ -37,9 +43,9 @@ Work Memory must avoid these traps. It should preserve context without becoming 
 - Mental fatigue from holding too much context in memory.
 - Reduced confidence when returning to interrupted work.
 
-## Product implication
+## Product implication hypothesis
 
-Work Memory must optimize for fast capture, later organization, and context recovery.
+Hypothesis: Work Memory should optimize for fast capture, later organization, and context recovery.
 
 It should not require folders, classifications, projects, or workflows before the user can create an entry. Classification can happen later because preserving the raw context is more important than placing it perfectly.
 
