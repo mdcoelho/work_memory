@@ -20,7 +20,7 @@ The product space exists because completed work becomes hard to explain after a 
 
 ## Opportunity 3: Reduce reconstruction effort
 
-The founder reconstructs work from Outlook, Odoo, Fusion, calendar, files, documents, task lists, notes, and memory.
+The founder reconstructs context from communication, records, artifacts, calendar events, files, documents, task lists, notes, and memory.
 
 Reducing reconstruction effort matters because the founder repeatedly resumes work, explains progress, and prepares handoffs.
 
@@ -36,11 +36,11 @@ The founder delays classification because interruption cost is higher than class
 
 Capture has to preserve the raw context first. Classification earns value only after the memory exists.
 
-## Opportunity 6: Replace timer meaning gaps with Work Logs
+## Opportunity 6: Replace timer meaning gaps with context
 
-The founder values Work Logs over timers.
+The founder values context over timers.
 
-Elapsed time does not explain what happened, what changed, what was decided, or why progress matters.
+Elapsed time does not explain which context changed, what was decided, or why progress matters.
 
 ## Opportunity 7: Use AI only to reduce cognitive load
 
@@ -84,7 +84,8 @@ The repository does not support these directions:
 - Completed work recall: [Product DNA](../00-product-dna.md), [Vision](../01-vision.md).
 - Reconstruction effort: [Problem Statement](../02-problem-statement.md).
 - Capture before classification: [Mental Model](../04-mental-model.md), [User Flows](../05-user-flows.md).
-- Work Logs over timers: [Mental Model](../04-mental-model.md), [Features](../06-features.md).
+- Context over timers: [Mental Model](../04-mental-model.md), [Features](../06-features.md).
 - AI boundaries: [AI](../08-ai.md).
 - Tool boundaries: [Product DNA](../00-product-dna.md), [Features](../06-features.md).
+- Context model: [Context](../thinking/01-context.md), [Context Graph](../thinking/02-context-graph.md).
 - Behavioural case detail: [Product Opportunities](../cases/07-product-opportunities.md).

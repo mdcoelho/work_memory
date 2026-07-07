@@ -28,12 +28,12 @@ The revised documentation is simpler and more decision-ready, but product design
 | `AGENTS.md` | Weak: good rules, but no shared terminology. Duplicated principles from Product DNA. Missing: review docs as source material. | Added core terminology and required reading of review docs. |
 | `docs/00-product-dna.md` | Strong philosophy, but repeated problem and vision content. Missing: the product's basic unit. | Tightened wording and added `Entry` as a non-negotiable concept. |
 | `docs/01-vision.md` | Strong ambition, but "faster than Things 3" needed clearer status as an experience benchmark. Potential contradiction: "personal and professional" blurred scope. | Kept the benchmark and clarified professional scope. |
-| `docs/02-problem-statement.md` | Good framing, but lacked concrete founder scenarios. Duplicated Product DNA language. | Added founder-specific tool contexts and aligned language with entries and Work Logs. |
+| `docs/02-problem-statement.md` | Good framing, but lacked concrete founder scenarios. Duplicated Product DNA language. | Added founder-specific context scenarios and aligned language with context identity. |
 | `docs/03-personas.md` | Personas were plausible but generic. The founder-observation rewrite removed invented persona expansion. | Rewritten as a founder profile with behavioural modes. |
 | `docs/04-mental-model.md` | Clear core loop, but task boundary was too loose. | Clarified that tasks may appear inside entries but are not managed as product objects. |
 | `docs/05-user-flows.md` | Empty. This was a major source-of-truth failure. | Added five product-level flows focused on capture, recovery, reconstruction, organization, and AI assistance. |
 | `docs/06-features.md` | Empty. Missing feature boundary created risk of uncontrolled scope. | Added allowed capabilities and explicit non-features. |
-| `docs/07-data-model.md` | Empty. Missing conceptual model created risk of architecture drift. | Added product-level objects without defining a technical schema. |
+| `docs/07-data-model.md` | Empty. Missing conceptual model created risk of product drift. | Added product-level concepts without defining a storage model. |
 | `docs/08-ai.md` | Empty. AI was mentioned elsewhere but not governed. | Added role, allowed assistance, forbidden assistance, and evidence gaps. |
 | `docs/09-roadmap.md` | Empty. Missing sequence could encourage premature building. | Added a learning roadmap, not a delivery plan. |
 | `docs/10-glossary.md` | Empty. Terminology was not controlled. | Added canonical product terms. |
@@ -58,7 +58,7 @@ The duplication was reduced by making [Product DNA](../00-product-dna.md) the pr
 ## Missing concepts found during the review
 
 - Basic unit of memory.
-- Work Log definition.
+- Context trace definition.
 - AI boundaries.
 - User flows.
 - Feature boundaries.
@@ -71,13 +71,13 @@ The duplication was reduced by making [Product DNA](../00-product-dna.md) the pr
 
 - The founder will capture entries during real interruptions only if capture is faster than the interruption cost.
 - Fast capture is more valuable than structured organization.
-- Work Logs must prove more useful than timers during reporting and recovery.
+- Context traces must prove more useful than timers during reporting and recovery.
 - AI assistance will reduce load rather than add review work.
-- Founder-specific design can still drift into generic productivity software.
+- Founder-specific design can still drift into generic productivity systems.
 - Offline first is important but still needs a product-level experience definition.
 
 ## Product risk after review
 
-The product should not move into broad implementation yet.
+The product should not move into broad build work yet.
 
-It should move through the founder's behavioural cases until the core loop feels inevitable: capture an entry, continue working, review the Work Log, and recover context.
+It should move through the founder's behavioural cases until the core loop feels inevitable: preserve context, continue working, review context evidence, and recover context.

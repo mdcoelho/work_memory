@@ -14,11 +14,11 @@ This review covers documentation risks that can distort product direction.
 
 ### 1. The product had a strong negative definition but a weak positive model
 
-The docs were clear about what Work Memory is not: Jira, ClickUp, Notion, CRM, wiki, or project management software.
+The docs were clear about what Work Memory is not: Jira, ClickUp, Notion, CRM, wiki, or project management systems.
 
 They were less clear about the basic unit of the product. Without a shared object model, future contributors can turn the product into notes, tasks, folders, timers, or AI chat.
 
-Fix applied: introduced `Entry`, `Work Log`, `Context`, `Classification`, and `Recovery` as product terms in [Glossary](../10-glossary.md) and [Data Model](../07-data-model.md).
+Fix applied: introduced `Context`, `Entry`, `Context Trace`, `Classification`, and `Recovery` as product terms in [Glossary](../10-glossary.md) and [Conceptual Model](../07-data-model.md).
 
 ### 2. Empty docs made the source of truth unreliable
 
@@ -55,7 +55,7 @@ Fix applied: tasks may appear inside entries as context, but they are not primar
 ## Product principles after review
 
 - The product model starts with entries, not tasks.
-- The Work Log is the primary surface of memory.
+- Context is the primary unit of memory.
 - Classification is optional and happens after capture.
 - AI is assistance, not a dependency.
 - Product decisions must stay grounded in the founder's observed behaviour.

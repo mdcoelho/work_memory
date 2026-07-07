@@ -6,11 +6,19 @@ This is a conceptual product model, not a storage or system design.
 
 The purpose is to keep product language consistent before build decisions exist.
 
-## Core objects
+## Core concepts
+
+### Context
+
+A context is the human meaning and identity behind work.
+
+It can include people, organizations, products, problems, decisions, artifacts, meetings, constraints, open questions, and current state.
+
+Context is the fundamental concept. Everything else exists to preserve or recover it.
 
 ### Entry
 
-An entry is one captured piece of work memory.
+An entry is captured evidence that helps preserve or recover a context.
 
 An entry should preserve:
 
@@ -19,19 +27,13 @@ An entry should preserve:
 - What changed, if anything changed.
 - What the founder needs when returning later.
 
-An entry is valid even if it is incomplete.
+An entry is valid even if it is incomplete, as long as it helps restore context later.
 
-### Work Log
+### Context trace
 
-A Work Log is the chronological record of entries.
+A context trace is chronological evidence created by entries.
 
-The Work Log is the founder's evidence of what actually happened during work. It should be useful for recall, status updates, handoffs, and resuming after interruptions.
-
-### Context
-
-Context is the meaning that makes an entry useful later.
-
-Context can include decisions, reasoning, blockers, open questions, progress, and the state of unfinished work.
+The trace is useful when it helps the founder recover context, explain work, prepare handoffs, and resume after interruptions. It is not the fundamental product model.
 
 ### Classification
 
@@ -50,5 +52,6 @@ The following should not be treated as primary product objects:
 - Ticket.
 - Pipeline stage.
 - Folder.
+- Container.
 
-They can appear inside entries as context, but they should not define the product model.
+They can appear inside entries as evidence, but they should not define the product model.

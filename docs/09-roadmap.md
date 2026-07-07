@@ -4,24 +4,24 @@
 
 This roadmap is a product-learning sequence, not a delivery plan.
 
-No dates, teams, or implementation commitments are defined here.
+No dates, teams, or build commitments are defined here.
 
 ## Phase 0: Model the founder's real day
 
 Preserve the behavioural cases as the design source of truth.
 
-Focus on Outlook, Odoo, Fusion, suppliers, management questions, meetings, reporting, and recovery.
+Focus on how contexts are born, named, split, merged, paused, resumed, and recovered.
 
-The product should stay grounded in [Real Day](cases/01-real-day.md), [Context Switches](cases/02-context-switches.md), [Reporting](cases/03-reporting.md), and [Recovery](cases/05-recovery.md).
+The product should stay grounded in [Context](thinking/01-context.md), [Context Graph](thinking/02-context-graph.md), [Context Lifecycle](thinking/03-context-lifecycle.md), [Real Day](cases/01-real-day.md), [Context Switches](cases/02-context-switches.md), and [Recovery](cases/05-recovery.md).
 
 ## Phase 1: Prove the founder's core loop
 
 Prove the loop against the founder's actual workday:
 
-1. Capture an entry during or immediately after interruption.
+1. Preserve a context during or immediately after interruption.
 2. Continue working.
-3. Review the Work Log.
-4. Recover context for reporting, supplier follow-up, Odoo checks, Fusion work, or management questions.
+3. Review recent context evidence.
+4. Recover context for reporting, supplier follow-up, product work, decisions, or management questions.
 
 No team workflows, dashboards, or task-management systems should be introduced in this phase.
 
@@ -29,7 +29,7 @@ No team workflows, dashboards, or task-management systems should be introduced i
 
 Add only assistance that makes the founder faster or clearer.
 
-Candidate areas include summarization, later classification, and Work Log review. AI should remain optional and non-interruptive.
+Candidate areas include summarization, later classification, and context review. AI should remain optional and non-interruptive.
 
 ## Phase 3: Expand cautiously
 

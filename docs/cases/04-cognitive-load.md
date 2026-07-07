@@ -2,74 +2,77 @@
 
 ## Scope
 
-This document ranks the mental effort in the founder's day.
+This document ranks sources of mental effort during the founder's workday.
 
-The ranking is based on observed behaviour in the repository and the founder's concrete work contexts.
+The ranking is based on observed behaviour in the repository and the founder's context-switching work.
 
 ## 1. Reconstructing context after interruption
 
-This creates the biggest productivity loss.
+The founder stops work, enters another context, then returns later without the same mental state. Recovery requires rebuilding what the context was, why it mattered, and where it stopped.
 
-The founder stops work, switches tool or conversation, then returns later without the same mental state. Recovery requires rebuilding what was being done, why it mattered, and where it stopped.
+This creates the largest productivity loss because it repeats many times and affects every other activity.
 
-The cost appears repeatedly across Outlook, Odoo, Fusion, meetings, suppliers, and management questions.
+## 2. Connecting evidence across containers
 
-## 2. Connecting evidence across tools
+The founder has to connect messages, records, artifacts, documents, meetings, and memory.
 
-The founder has to connect Outlook messages, Odoo records, Fusion models, documents, meetings, and memory.
-
-Each tool contains evidence, but no tool carries the full work context. The founder supplies the connective tissue mentally.
+Each container holds evidence, but no container carries the full context. The founder supplies the connective tissue mentally.
 
 ## 3. Explaining completed work
 
-Reporting creates heavy mental effort because the founder must convert scattered work traces into a coherent explanation.
+The founder has to report progress and answer management questions.
 
-The founder has to separate work actually done from work merely planned, touched, or interrupted.
+The effort comes from turning scattered context fragments into a coherent explanation of what happened, why it mattered, and what remains unresolved.
 
-## 4. Holding many open workstreams
+## 4. Holding many open contexts
 
-The founder owns multiple simultaneous workstreams.
+The founder carries multiple active contexts at once.
 
-Each open thread carries unfinished state, decisions, supplier context, business state, and next actions. The mental load grows when several remain active at once.
+Each one has people, artifacts, decisions, constraints, and unresolved questions. Holding them in memory creates fatigue even when no single context is difficult.
 
-## 5. Preserving reasoning
+## 5. Preserving decision reasoning
 
-The founder makes decisions and changes direction across the day.
+Decisions are easy to remember as outcomes and harder to remember as reasoning.
 
-When reasoning is not captured, the founder has to repeat thinking or defend a decision from memory.
+The founder has to preserve why one option was chosen, which constraints mattered, and what would change the decision later.
 
-## 6. Returning to Fusion after communication
+## 6. Returning to technical artifacts after communication
 
-Fusion work requires technical focus.
+Technical work requires focused reasoning.
 
-When Outlook, Odoo, suppliers, or management questions interrupt Fusion work, the founder loses design reasoning and has to rebuild the model context.
+When communication, supplier questions, records, meetings, or reporting interrupt that reasoning, the founder loses the artifact context and has to rebuild it.
 
-## 7. Moving between supplier communication and business state
+## 7. Translating between supplier language and product state
 
-Supplier questions require translation between Outlook conversation and Odoo state.
+Supplier questions often need translation into product, production, business, or decision context.
 
-The mental effort comes from remembering why the supplier question matters and what business record answers it.
+The question is visible. The real work is understanding which context it belongs to and what it changes.
 
 ## 8. Classifying too early
 
-Classification during capture adds avoidable load.
+Choosing structure too early creates avoidable effort.
 
-The founder needs to preserve context first. Deciding project, folder, label, status, or category during interruption competes with the memory that needs to be saved.
+The founder often needs to preserve context before knowing the final label, parent context, or category.
 
 ## 9. Reviewing AI output
 
-AI helps only when it reduces effort.
+AI can reduce cognitive load only when it is clearly subordinate to captured context.
 
-AI creates load when the founder has to check whether it invented facts, distorted context, or interrupted capture.
+If AI invents certainty or requires review at the wrong moment, it becomes another context to manage.
 
 ## 10. Estimating effort from memory
 
-When duration matters, the founder has to infer effort from scattered evidence.
+When effort must be explained, the founder reconstructs it from remembered work fragments.
 
-Timers alone do not solve the problem because duration without meaning does not explain what happened.
+Timers alone do not solve the problem because duration without context does not explain what happened.
 
-## Productivity loss summary
+## Biggest productivity losses
 
-The largest productivity loss comes from reconstruction, not from execution.
+The biggest losses come from:
 
-The founder loses time and confidence when recovering context that existed earlier but was never captured in a usable form.
+- Reconstructing context after interruptions.
+- Connecting evidence across containers.
+- Explaining completed work without preserved context.
+- Holding too many open contexts in memory.
+
+These losses compound because each one makes the next context switch more expensive.

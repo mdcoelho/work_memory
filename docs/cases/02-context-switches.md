@@ -4,137 +4,137 @@
 
 This document analyses context switches in the founder's observed workday.
 
-Each switch damages memory because the tools involved do not carry the work context between them.
+The switch is not between containers. The switch is between human contexts.
 
-## Switch 1: Outlook to Odoo
+## Switch 1: Supplier context to product context
 
-Cause: a supplier message or business question arrives in Outlook.
+Cause: a supplier question reveals that a product, part, timing, production, or design context needs attention.
 
 Information lost:
 
-- The founder's interpretation of the email.
-- The supplier's implied urgency.
-- The previous work interrupted by the message.
+- The founder's interpretation of the supplier question.
+- The implied urgency.
+- The previous context interrupted by the question.
 - The reason this supplier issue matters now.
 
 Information that should have been captured:
 
-- Supplier name.
-- Related product, order, or customer.
+- Supplier.
+- Related product, part, customer, or internal responsibility.
 - Question being answered.
-- Odoo record or business state being checked.
+- Business or operational state being checked.
 - Previous context that was interrupted.
 
 What helps recovery:
 
-- A record linking the Outlook thread to the Odoo check.
-- A short note of why the switch happened.
+- A record of why the supplier question matters.
+- The context it belongs to.
 - The unresolved question that needs an answer.
 
-## Switch 2: Odoo to Fusion
+## Switch 2: Product context to artifact context
 
-Cause: the Odoo check exposes a technical, product, or design question.
+Cause: the founder needs to inspect a record, BOM, drawing, model, document, or previous conversation.
 
 Information lost:
 
-- Which business record triggered the Fusion inspection.
-- Which supplier or customer question is connected to the model.
-- What decision needs to be made after reviewing the model.
-- What answer must return to Outlook or management.
+- Which product context triggered the inspection.
+- Which supplier, customer, or production issue is connected to the artifact.
+- What decision depends on the inspection.
+- What answer must return to another person or context.
 
 Information that should have been captured:
 
-- Odoo context.
-- Fusion model or design area.
-- Reason for opening Fusion.
+- Parent context.
+- Artifact being inspected.
+- Reason for inspecting it.
 - Expected answer or decision.
 
 What helps recovery:
 
-- A bridge between business state and design state.
-- A captured reason for the technical inspection.
-- A resume point after leaving Fusion.
+- A bridge between the context and the artifact.
+- A captured reason for the inspection.
+- A resume point after leaving the artifact.
 
-## Switch 3: Fusion to Outlook
+## Switch 3: Artifact context to communication context
 
-Cause: the founder needs to answer a supplier, management question, or meeting request.
+Cause: the founder needs to answer a supplier, customer, colleague, management question, or meeting request.
 
 Information lost:
 
-- Where design reasoning stopped.
-- What option was being evaluated.
-- Which detail was important in the model.
+- Where reasoning stopped.
+- Which option was being evaluated.
+- Which artifact detail was important.
 - Whether the answer was ready or still uncertain.
 
 Information that should have been captured:
 
-- Current design conclusion.
-- Open design question.
-- Next action in Fusion.
+- Current conclusion.
+- Open question.
+- Next step in the artifact context.
 - Communication that triggered the switch.
 
 What helps recovery:
 
-- A temporary work note that keeps the Fusion reasoning alive.
-- A link between the message and the design state.
+- A temporary context note that keeps the reasoning alive.
+- A link between the communication and the artifact state.
 - A clear unfinished state.
 
-## Switch 4: Deep work to management question
+## Switch 4: Deep work context to reporting context
 
 Cause: management asks for progress, status, or explanation.
 
 Information lost:
 
-- Active reasoning from the work being interrupted.
+- Active reasoning from the interrupted context.
 - Details needed to explain progress accurately.
 - Which parts of the day were completed versus only touched.
-- Which workstream the answer belongs to.
+- Which context the answer belongs to.
 
 Information that should have been captured:
 
 - Work performed since the last report.
 - Decisions made.
 - Blockers found.
-- Threads still open.
+- Contexts still open.
 - Evidence source for the report.
 
 What helps recovery:
 
-- A Work Log that explains completed work.
+- Context memory that explains completed work.
 - A record of decisions and blockers.
-- A way to reconstruct the day without searching every tool.
+- A way to reconstruct the day without searching every container.
 
-## Switch 5: Meeting to active work
+## Switch 5: Meeting context to active context
 
-Cause: a scheduled meeting interrupts active work.
+Cause: a scheduled or urgent meeting interrupts active work.
 
 Information lost:
 
-- What work was paused.
+- What context was paused.
 - Why it was paused.
-- What meeting decision affects which workstream.
-- Which thread should resume after the meeting.
+- What meeting decision affects which context.
+- Which context should resume after the meeting.
 
 Information that should have been captured:
 
-- Pre-meeting work state.
+- Pre-meeting context state.
 - Meeting decisions.
-- Affected workstream.
+- Affected contexts.
 - Resume point.
 
 What helps recovery:
 
 - A before-and-after context record.
-- Meeting decisions tied to workstreams.
+- Meeting decisions tied to the affected contexts.
 - A clear return point.
 
-## Switch 6: Reporting to execution
+## Switch 6: Reporting context to execution context
 
 Cause: the founder stops execution to explain what happened.
 
 Information lost:
 
-- Momentum in the active work.
+- Momentum in the active context.
 - Fine-grained reasoning around the current problem.
 - The difference between performed work and planned work.
 
@@ -143,14 +143,14 @@ Information that should have been captured:
 - What changed.
 - What was completed.
 - What remains blocked.
-- Why time was spent.
+- Why effort was spent.
 
 What helps recovery:
 
-- Completed-work memory.
-- Context-rich entries.
-- Reports generated from work evidence rather than memory alone.
+- Completed-context memory.
+- Context-rich evidence.
+- Reports generated from context rather than memory alone.
 
 ## Pattern
 
-The same problem repeats across every switch: the current software window shows the object of work, but not the work context.
+The same problem repeats across every switch: visible containers show artifacts, but the founder needs the context graph behind them.

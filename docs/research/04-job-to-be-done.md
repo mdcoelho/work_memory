@@ -74,8 +74,8 @@ This includes progress reporting, decision explanation, and handoff preparation.
 
 ## Forces blocking the job
 
-- Task tools focus on future obligations.
-- Project management tools add process.
+- Task systems focus on future obligations.
+- Project management systems add process.
 - Notes require structure or fail at retrieval.
 - Timers record duration without meaning.
 - AI can add review burden.

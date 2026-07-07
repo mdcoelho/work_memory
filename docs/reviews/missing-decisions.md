@@ -18,7 +18,7 @@ They are not defects. They are decisions that should not be guessed by an AI age
 
 Decision made: The first target user is the project founder.
 
-Remaining decision: Which founder scenario should anchor the first product experience: reporting, Fusion recovery, supplier follow-up, management questions, or Odoo checks?
+Remaining decision: Which founder scenario should anchor the first product experience: reporting, supplier follow-up, product recovery, management questions, or decision recovery?
 
 Why it matters: solving all founder scenarios at once can still dilute the product.
 
@@ -28,9 +28,9 @@ Decision needed: What does "capture in seconds" mean in practice?
 
 Why it matters: "fast" is not a product requirement until it has a measurable threshold.
 
-### Work Log value
+### Context trace value
 
-Decision needed: What founder reporting or recovery moment proves that a Work Log is more useful than a timer?
+Decision needed: What founder reporting or recovery moment proves that a context trace is more useful than a timer?
 
 Why it matters: the founder values meaning over duration, but the product must make that value concrete in behaviour.
 
@@ -78,7 +78,7 @@ Why it matters: the founder captures sensitive client, company, supplier, and pe
 
 ### Export and portability
 
-Decision needed: Can the founder export entries and Work Logs?
+Decision needed: Can the founder export context evidence?
 
 Why it matters: professional memory should not become a locked-in black box.
 

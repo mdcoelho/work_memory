@@ -2,7 +2,7 @@
 
 ## Evidence base
 
-This document uses only competitors, tool categories, and reference points already present in the repository.
+This document uses only competitors, container categories, and reference points already present in the repository.
 
 No market sizing, pricing, positioning, or external feature audit is included.
 
@@ -13,30 +13,30 @@ The founder's strongest competition is not a single product.
 The strongest competition is the existing reconstruction stack:
 
 - Memory.
-- Outlook search.
+- Communication search.
 - Calendar review.
 - Notes.
 - Documents.
 - Files.
 - Task lists.
 - Timers.
-- Odoo record review.
-- Fusion model review.
+- Business and operational record review.
+- Technical artifact review.
 - Project management systems.
 
-These tools already participate in the founder's workday. They also fragment the founder's professional memory.
+These containers already participate in the founder's workday. They also fragment the founder's professional memory because none of them owns context identity.
 
 ## Task managers
 
 Task managers preserve future obligations.
 
-They do not preserve enough evidence of completed work, decisions, reasoning, and context. This creates the gap between what the founder has to do and what the founder actually did.
+They do not preserve enough evidence of contexts, decisions, reasoning, relationships, and state. This creates the gap between what the founder has to do and what the founder actually needs to understand.
 
 ## Project management systems
 
 Jira and ClickUp represent the wrong product shape for Work Memory.
 
-They optimize for coordination, statuses, workflows, ownership, reporting overhead, and team process. The founder needs professional memory without process administration.
+They optimize for coordination, statuses, workflows, ownership, reporting overhead, and team process. The founder needs context memory without process administration.
 
 ## Notes and wikis
 
@@ -48,31 +48,25 @@ They can hold information, but they do not solve the founder's capture moment wh
 
 Calendar shows planned time and meetings.
 
-It helps reconstruct the day but does not show what actually happened, what changed, or why work paused.
+It helps reconstruct the day but does not show what context actually changed, what decision was made, or why work paused.
 
-## Chat
+## Communication
 
-Chat contains requests, decisions, and coordination.
+Communication contains requests, decisions, and coordination.
 
-It also buries context inside conversations. The founder has to search and interpret chat history to reconstruct work.
+It also buries context inside conversations. The founder has to search and interpret history to reconstruct work.
 
-## Outlook
+## Business and operational records
 
-Outlook contains supplier messages, management questions, meeting changes, and communication trails.
+Records contain state.
 
-It does not connect those messages to Odoo state, Fusion reasoning, or the founder's interrupted work context.
+They do not explain why the founder entered them, which context triggered the check, or what answer needs to move back into another context.
 
-## Odoo
+## Technical artifacts
 
-Odoo contains business state.
+Technical artifacts contain product, design, manufacturing, or drawing state.
 
-It does not explain why the founder entered a record, which supplier question triggered the check, or what answer needs to return to Outlook.
-
-## Fusion
-
-Fusion contains technical and design state.
-
-It does not preserve the supplier, Odoo, management, or reporting context around the model.
+They do not preserve the supplier, customer, decision, meeting, or reporting context around the artifact.
 
 ## Files and documents
 
@@ -84,11 +78,11 @@ They do not reliably explain reasoning, interruption state, or the next resume p
 
 Timers record elapsed time.
 
-The founder values Work Logs over timers because remembering meaning is more useful than remembering duration alone.
+The founder values context memory over timers because remembering meaning is more useful than remembering duration alone.
 
-## AI tools
+## AI systems
 
-AI tools can reduce cognitive load when they summarize, classify, connect, or clarify captured context.
+AI systems can reduce cognitive load when they summarize, classify, connect, or clarify captured context.
 
 AI becomes a competitor to trust when it interrupts, invents facts, or creates review burden.
 
@@ -96,18 +90,19 @@ AI becomes a competitor to trust when it interrupts, invents facts, or creates r
 
 Things 3 is a speed benchmark for capture.
 
-The repository uses it to express the founder's speed standard: capture must feel extremely fast.
+The repository uses it to express the founder's speed standard: preserving context must feel extremely fast.
 
 ## Competitive conclusion
 
 The founder does not need another planning surface.
 
-The founder needs a memory surface that explains completed work across interruptions, scattered tools, and overlapping workstreams.
+The founder needs a context surface that explains work across interruptions, scattered containers, and overlapping contexts.
 
 ## Traceability
 
 - Negative category boundaries: [Product DNA](../00-product-dna.md), [Features](../06-features.md).
-- Existing tool landscape: [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md), [Real Day](../cases/01-real-day.md).
-- Work Logs over timers: [Mental Model](../04-mental-model.md), [Glossary](../10-glossary.md).
+- Context model: [Context](../thinking/01-context.md), [Context Graph](../thinking/02-context-graph.md).
+- Existing container landscape: [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md), [Real Day](../cases/01-real-day.md).
+- Context over timers: [Mental Model](../04-mental-model.md), [Glossary](../10-glossary.md).
 - AI trust limits: [AI](../08-ai.md).
 - Things 3 benchmark: [Vision](../01-vision.md).

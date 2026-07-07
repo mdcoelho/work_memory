@@ -2,22 +2,22 @@
 
 ## Simplest model
 
-Work Memory is a professional memory layer.
+Work Memory is a professional context layer.
 
-The founder creates entries close to the moment of work. The product helps recover context later, without forcing organization upfront.
+The founder preserves context close to the moment of work. Entries and logs are supporting traces; the fundamental object is the context itself.
 
 The core loop is:
 
-1. Capture an entry.
+1. Preserve a context.
 2. Continue working.
 3. Organize only when useful.
 4. Recover context when needed.
 
 ## Capture first
 
-Capture is the most important behaviour.
+Context preservation is the most important behaviour.
 
-An entry can be incomplete, messy, or temporary. It only needs to preserve enough context that the founder can recover the thought later.
+An entry can be incomplete, messy, or temporary. It only needs to preserve enough evidence that the founder can recover the context later.
 
 The product should never block capture by asking the founder to choose a project, folder, status, category, priority, or workflow. If capture slows down, the product loses its reason to exist.
 
@@ -33,17 +33,17 @@ Folders, labels, and structure are less important than the founder's ability to 
 
 Context is the product's primary material.
 
-Useful context includes what changed, what was decided, what was attempted, what blocked progress, why a direction changed, and what the founder should remember when returning later.
+Useful context includes the customer, supplier, product, problem, decision, artifact, meeting, constraint, unresolved question, recent change, and current state that make work meaningful.
 
 A clean structure without context is not valuable. A rough capture with meaningful context is valuable.
 
-## Work Log over timer
+## Context over chronology
 
-A timer records duration.
+Chronology records order.
 
-A Work Log records meaning.
+Context records meaning.
 
-Work Memory should help the founder understand the substance of work, not just how long something took. Time can matter, but context matters more.
+Work Memory should help the founder understand the substance of a context, not just when something happened. Time can matter, but context identity matters more.
 
 ## AI's role
 

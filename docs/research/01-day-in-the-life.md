@@ -4,25 +4,25 @@
 
 These field notes synthesize repository evidence about the first target user: the project founder.
 
-The founder owns many parallel workstreams across clients, teams, suppliers, operational questions, and responsibilities. The strongest source documents are [Founder Profile](../03-personas.md), [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md), and [Mental Model](../04-mental-model.md).
+The founder owns many parallel contexts across customers, products, suppliers, problems, decisions, meetings, artifacts, operational questions, and responsibilities. The strongest source documents are [Context](../thinking/01-context.md), [Context Graph](../thinking/02-context-graph.md), [Founder Profile](../03-personas.md), [Problem Statement](../02-problem-statement.md), [Product DNA](../00-product-dna.md), and [Mental Model](../04-mental-model.md).
 
 ## Observed workday
 
 The founder changes professional context many times during the day.
 
-The founder moves between Outlook, Odoo, Fusion, meetings, supplier questions, management questions, documents, decisions, urgent requests, operational questions, unfinished thoughts, and partially completed work. The workday does not run as one continuous thread. It runs as a sequence of interrupted work fragments.
+The founder moves between customer, supplier, product, problem, decision, meeting, artifact, reporting, urgent-request, operational, unfinished-thought, and partially completed contexts. The workday does not run as one continuous thread. It runs as a sequence of interrupted context fragments.
 
-The founder carries several workstreams at once. Each workstream has its own client, team, responsibility, decision history, and unfinished state.
+The founder carries several contexts at once. Each context has its own people, artifacts, relationships, decision history, and unfinished state.
 
 ## Starting work
 
 The founder begins work with context already distributed across several places:
 
 - Calendar.
-- Outlook.
-- Odoo.
-- Fusion.
-- Supplier conversations.
+- Communication traces.
+- Business and operational records.
+- Technical artifacts.
+- Supplier contexts.
 - Management questions.
 - Files.
 - Documents.
@@ -69,7 +69,7 @@ The task itself can survive the switch. The surrounding meaning gets damaged:
 
 The founder reconstructs context from scattered sources when returning to work.
 
-The reconstruction path crosses Outlook, Odoo, Fusion, calendar, files, documents, task lists, notes, and memory. This is slow because each tool contains only part of the story.
+The reconstruction path crosses communication, records, artifacts, calendar events, files, documents, task lists, notes, and memory. This is slow because each container contains only part of the story.
 
 The founder uses reconstruction to resume work, explain progress, prepare handoffs, and report what happened.
 
@@ -91,9 +91,9 @@ The repository repeatedly favors capture before organization. This reflects the 
 
 ## Time and duration behaviour
 
-The founder values Work Logs over timers.
+The founder values context over timers.
 
-The repository treats timers as duration records and Work Logs as meaning records. The founder needs context, progress, and reasoning more than elapsed time alone.
+The repository treats timers as duration records and context traces as meaning records. The founder needs context, progress, and reasoning more than elapsed time alone.
 
 ## Cognitive load
 
@@ -104,9 +104,10 @@ The fatigue comes from holding too many open threads in memory, reconstructing p
 ## Traceability
 
 - Fragmented day: [Product DNA](../00-product-dna.md), [Problem Statement](../02-problem-statement.md).
-- Concrete tool contexts: [Real Day](../cases/01-real-day.md), [Current Workflows](03-current-workflows.md).
-- Multiple workstreams: [Founder Profile](../03-personas.md).
+- Context model: [Context](../thinking/01-context.md), [Context Graph](../thinking/02-context-graph.md).
+- Concrete context cases: [Real Day](../cases/01-real-day.md), [Current Workflows](03-current-workflows.md).
+- Multiple contexts: [Founder Profile](../03-personas.md).
 - Reconstruction sources: [Product DNA](../00-product-dna.md), [Problem Statement](../02-problem-statement.md).
-- Work Logs over timers: [Problem Statement](../02-problem-statement.md), [Mental Model](../04-mental-model.md), [Features](../06-features.md).
+- Context over timers: [Problem Statement](../02-problem-statement.md), [Mental Model](../04-mental-model.md), [Features](../06-features.md).
 - Capture before classification: [Product DNA](../00-product-dna.md), [Mental Model](../04-mental-model.md).
 - Cognitive fatigue: [Problem Statement](../02-problem-statement.md), [User Pains](02-user-pains.md).

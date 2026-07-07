@@ -28,13 +28,13 @@ Resolution: Introduced `Entry` as the basic unit of Work Memory.
 
 Why introduced: contributors need one shared word for the thing the founder creates.
 
-### Work Log versus timer
+### Context trace versus timer
 
-Issue: Work Logs were said to be more important than timers, but Work Log was not defined.
+Issue: chronological traces were said to be more important than timers, but the deeper concept was context recovery.
 
-Resolution: Introduced `Work Log` as the chronological record of entries.
+Resolution: chronology is now subordinate to `Context` and `Context Trace`.
 
-Why introduced: the product needs a positive alternative to timers.
+Why introduced: the product needs a positive alternative to timers without becoming time tracking.
 
 ### Classification
 
@@ -88,7 +88,7 @@ Use these terms consistently:
 
 - Work Memory
 - Entry
-- Work Log
+- Context Trace
 - Context
 - Capture
 - Classification

@@ -1,30 +1,32 @@
 # Observed Patterns
 
 - The founder changes professional context throughout the day.
-- The founder works across Outlook, Odoo, Fusion, meetings, suppliers, management questions, documents, decisions, urgent requests, operational questions, unfinished thoughts, and partially completed work.
-- The founder owns multiple simultaneous workstreams.
+- The founder works across customer, supplier, product, problem, decision, meeting, artifact, reporting, urgent-request, operational, unfinished-thought, and partially completed contexts.
+- The founder owns multiple simultaneous contexts.
 - The founder remembers obligations more easily than completed work.
 - The founder loses professional context when interrupted.
 - The founder moves to another workstream before the previous context has been captured.
-- The founder reconstructs work from Outlook, Odoo, Fusion, calendar, files, documents, task lists, notes, and memory.
+- The founder reconstructs context from communication, records, artifacts, calendar events, files, documents, task lists, notes, and memory.
 - The founder reconstructs work to resume, explain progress, prepare handoffs, and understand decisions.
 - The founder experiences cognitive fatigue from holding too many open threads in memory.
 - The founder repeats thinking when prior context was not captured.
 - The founder values context more than folders.
-- The founder values Work Logs more than timers.
+- The founder values context more than timers.
 - The founder needs meaning, progress, decisions, and reasoning more than elapsed time alone.
 - The founder delays classification because capture speed matters more than perfect structure.
 - The founder needs capture to happen before organization.
 - The founder needs entries that can be incomplete, messy, or temporary.
 - The founder works near task and project management systems but does not want Work Memory to become another process tool.
 - Jira and ClickUp represent process-heavy directions to avoid.
-- Notion, wikis, CRMs, and project management software represent categories outside the core product shape.
+- Notion, wikis, CRMs, and project management systems represent categories outside the core product shape.
 - Things 3 represents the founder's speed benchmark for capture.
 - AI is useful only when it reduces cognitive load.
 - AI becomes harmful when it interrupts, invents facts, or requires extra review.
 - Handoffs become weaker when decisions and reasoning are missing.
 - Progress reporting becomes harder when work evidence is scattered.
 - Management questions interrupt execution and trigger reconstruction.
-- Supplier questions force movement between Outlook, Odoo, and Fusion.
-- The same software window can show the object of work without explaining the current work context.
+- Supplier questions force movement between supplier, product, business, technical, and decision contexts.
+- The same container can show an artifact without explaining the current work context.
+- The founder can stay inside one container while switching between unrelated contexts.
+- The founder can move across several containers while staying inside one context.
 - The founder needs professional memory more than another planning system.

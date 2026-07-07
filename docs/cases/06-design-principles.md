@@ -4,64 +4,64 @@
 
 These principles come only from observed founder behaviour.
 
-They are not generic app principles.
+They are not generic product principles.
 
 ## 1. Preserve context before structure
 
 The founder loses context during interruptions.
 
-The product must preserve the live work state before asking for project, folder, label, category, status, or workflow.
+The product must preserve the live context before asking for project, folder, label, category, status, or workflow.
 
-## 2. Make capture faster than the interruption
+## 2. Treat containers as evidence
 
-The founder switches quickly between Outlook, Odoo, Fusion, meetings, suppliers, and management questions.
+Messages, records, models, drawings, documents, meetings, and calls are containers.
 
-Capture has to fit inside that transition. If capture takes longer than the interruption window, the founder will keep relying on memory.
+They can hold evidence, but none of them is the context.
 
-## 3. Treat completed work as first-class
+## 3. Preserve context identity when names change
 
-The founder's pain is remembering what actually happened.
+The same context can be described first as a supplier question, then as a product problem, then as a decision, then as a reporting item.
 
-Completed work, decisions, blockers, and reasoning deserve more attention than future task planning.
+The product should protect the underlying identity, not only the current label.
 
-## 4. Connect tools through work context
+## 4. Treat completed context as first-class
 
-Outlook, Odoo, and Fusion each show part of the work.
+The founder's pain is remembering what actually happened inside a context.
 
-The product should preserve the context that connects communication, business state, and technical state.
+Completed decisions, blockers, changes, and reasoning deserve more attention than future task planning.
 
-## 5. Support reporting without reconstruction
+## 5. Connect relationships, not folders
+
+The founder's mental model is relational.
+
+Customer, supplier, product, problem, decision, artifact, and meeting gain meaning through their connections.
+
+## 6. Support reporting without reconstruction
 
 The founder has to explain work performed.
 
-The product should make reporting draw from captured work memory instead of forcing a manual search across tools.
+The product should make reporting draw from preserved context instead of forcing a manual search across containers.
 
-## 6. Keep AI subordinate to memory
+## 7. Keep AI subordinate to context
 
 The founder accepts AI only when it reduces cognitive load.
 
-AI should help interpret captured context, not interrupt capture, invent facts, or become the main surface.
+AI should help interpret preserved context, not interrupt capture, invent facts, or become the main surface.
 
-## 7. Keep project management out of the core
+## 8. Keep process management out of the core
 
-The founder works near project management systems but does not need another process tool.
+The founder works near process systems but does not need another process tool.
 
 The product should avoid boards, status workflows, team assignment, and process dashboards unless founder behaviour proves they are necessary.
 
-## 8. Make recovery the measure of success
+## 9. Make recovery the measure of success
 
-The product succeeds when the founder returns to work with less reconstruction.
+The product succeeds when the founder returns to a context with less reconstruction.
 
-The decisive moment is not capture alone. It is whether the captured context helps the founder resume, explain, and hand off work later.
-
-## 9. Respect messy memory
-
-The founder's workday is fragmented.
-
-Entries can be incomplete, temporary, and imperfect as long as they preserve the meaning needed for recovery.
+The decisive moment is not capture alone. It is whether the preserved context helps the founder resume, explain, and decide later.
 
 ## 10. Reduce mental carry
 
-The founder carries many open threads.
+The founder carries many open contexts.
 
 The product should reduce what must stay in the founder's head between interruptions.

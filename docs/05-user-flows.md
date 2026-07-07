@@ -4,16 +4,16 @@
 
 These flows describe product behaviour. They are not build requirements.
 
-Each flow protects the same rule: capture first, organize later.
+Each flow protects the same rule: preserve context first, organize later.
 
-## Flow 1: Capture during interruption
+## Flow 1: Preserve context during interruption
 
 The founder is working, gets interrupted, and needs to preserve context before switching away.
 
 Expected outcome:
 
-- The founder creates an entry in seconds.
-- The entry preserves enough context to recover later.
+- The founder preserves the active context in seconds.
+- The capture preserves enough relationships to recover later.
 - The founder is not forced to classify, schedule, assign, or structure anything.
 
 This is the most important flow. If this flow is slow, the product fails.
@@ -24,18 +24,18 @@ The founder returns to work after time away.
 
 Expected outcome:
 
-- The founder sees recent entries in a Work Log.
+- The founder sees recent context evidence.
 - The founder can understand what happened and why it mattered.
 - The founder can restart without reconstructing context from memory.
 
-## Flow 3: Reconstruct the day
+## Flow 3: Reconstruct context
 
-The founder wants to understand what actually happened.
+The founder wants to understand which contexts moved, changed, split, merged, paused, or resolved.
 
 Expected outcome:
 
-- The Work Log shows the substance of the day.
-- Entries help the founder remember decisions, progress, blockers, and shifts in attention.
+- The product shows the substance of relevant contexts.
+- Captured evidence helps the founder remember decisions, progress, blockers, and shifts in attention.
 - The founder can prepare a truthful update without relying on timers.
 
 ## Flow 4: Organize later
