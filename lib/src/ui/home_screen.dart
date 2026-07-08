@@ -2,15 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../models.dart';
+import '../platform/quick_entry_service.dart';
 import '../state/app_state.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({required this.appState, super.key});
 
   final AppState appState;
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final _quickEntryService = QuickEntryService();
+  String? _registeredQuickEntryShortcut;
+  bool _quickEntryDialogOpen = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _quickEntryService.onQuickEntry = _openQuickEntry;
+    widget.appState.addListener(_syncQuickEntryShortcut);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _syncQuickEntryShortcut(),
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.appState == widget.appState) return;
+
+    oldWidget.appState.removeListener(_syncQuickEntryShortcut);
+    widget.appState.addListener(_syncQuickEntryShortcut);
+    _registeredQuickEntryShortcut = null;
+    _syncQuickEntryShortcut();
+  }
+
+  @override
+  void dispose() {
+    widget.appState.removeListener(_syncQuickEntryShortcut);
+    _quickEntryService.onQuickEntry = null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final appState = widget.appState;
     final compact = MediaQuery.sizeOf(context).width < 860;
     final content = appState.section == AppSection.reports
         ? _ReportPane(appState: appState)
@@ -18,7 +57,13 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       drawer: compact
-          ? Drawer(child: _Sidebar(appState: appState, closeOnSelect: true))
+          ? Drawer(
+              child: _Sidebar(
+                appState: appState,
+                closeOnSelect: true,
+                onEditQuickEntryShortcut: _editQuickEntryShortcut,
+              ),
+            )
           : null,
       appBar: compact
           ? AppBar(title: Text(_workspaceTitle(appState)), centerTitle: false)
@@ -26,19 +71,62 @@ class HomeScreen extends StatelessWidget {
       body: Row(
         children: <Widget>[
           if (!compact)
-            SizedBox(width: 260, child: _Sidebar(appState: appState)),
+            SizedBox(
+              width: 260,
+              child: _Sidebar(
+                appState: appState,
+                onEditQuickEntryShortcut: _editQuickEntryShortcut,
+              ),
+            ),
           if (!compact) const VerticalDivider(width: 1),
           Expanded(child: content),
         ],
       ),
     );
   }
+
+  void _syncQuickEntryShortcut() {
+    final shortcut = widget.appState.quickEntryShortcut;
+    final serialized = shortcut.serialize();
+    if (_registeredQuickEntryShortcut == serialized) return;
+
+    _registeredQuickEntryShortcut = serialized;
+    _quickEntryService.register(shortcut);
+  }
+
+  Future<void> _openQuickEntry() async {
+    if (!mounted || _quickEntryDialogOpen) return;
+
+    _quickEntryDialogOpen = true;
+    try {
+      await _showQuickEntryDialog(context, widget.appState);
+    } finally {
+      _quickEntryDialogOpen = false;
+    }
+  }
+
+  Future<void> _editQuickEntryShortcut() async {
+    final shortcut = await showDialog<QuickEntryShortcut>(
+      context: context,
+      builder: (_) => _ShortcutRecorderDialog(
+        initialShortcut: widget.appState.quickEntryShortcut,
+      ),
+    );
+    if (shortcut == null) return;
+
+    await widget.appState.updateQuickEntryShortcut(shortcut);
+  }
 }
 
 class _Sidebar extends StatelessWidget {
-  const _Sidebar({required this.appState, this.closeOnSelect = false});
+  const _Sidebar({
+    required this.appState,
+    required this.onEditQuickEntryShortcut,
+    this.closeOnSelect = false,
+  });
 
   final AppState appState;
+  final VoidCallback onEditQuickEntryShortcut;
   final bool closeOnSelect;
 
   @override
@@ -164,6 +252,13 @@ class _Sidebar extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
+            child: _QuickEntryShortcutTile(
+              shortcut: appState.quickEntryShortcut,
+              onTap: onEditQuickEntryShortcut,
+            ),
+          ),
           if (appState.error != null)
             Padding(
               padding: const EdgeInsets.all(12),
@@ -242,11 +337,13 @@ class _TaskListPane extends StatefulWidget {
 class _TaskListPaneState extends State<_TaskListPane> {
   final _newTaskController = TextEditingController();
   final _newTaskFocus = FocusNode();
+  final _paneFocus = FocusNode();
 
   @override
   void dispose() {
     _newTaskController.dispose();
     _newTaskFocus.dispose();
+    _paneFocus.dispose();
     super.dispose();
   }
 
@@ -258,79 +355,105 @@ class _TaskListPaneState extends State<_TaskListPane> {
         appState.section != AppSection.completed &&
         appState.section != AppSection.reports;
 
-    return CallbackShortcuts(
-      bindings: <ShortcutActivator, VoidCallback>{
-        const SingleActivator(LogicalKeyboardKey.keyN, meta: true):
-            _newTaskFocus.requestFocus,
-        const SingleActivator(LogicalKeyboardKey.keyN, control: true):
-            _newTaskFocus.requestFocus,
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(22, 18, 22, 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  _workspaceTitle(appState),
-                  style: const TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                if (canAddTask)
-                  TextField(
-                    controller: _newTaskController,
-                    focusNode: _newTaskFocus,
-                    textInputAction: TextInputAction.done,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.add_rounded),
-                      hintText: 'New task',
-                      border: OutlineInputBorder(),
-                      isDense: true,
+    return Focus(
+      focusNode: _paneFocus,
+      autofocus: true,
+      child: CallbackShortcuts(
+        bindings: <ShortcutActivator, VoidCallback>{
+          const SingleActivator(LogicalKeyboardKey.keyN, meta: true):
+              _newTaskFocus.requestFocus,
+          const SingleActivator(LogicalKeyboardKey.keyN, control: true):
+              _newTaskFocus.requestFocus,
+          const SingleActivator(LogicalKeyboardKey.arrowDown): () =>
+              _selectAdjacentTask(1),
+          const SingleActivator(LogicalKeyboardKey.arrowUp): () =>
+              _selectAdjacentTask(-1),
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(22, 18, 22, 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    _workspaceTitle(appState),
+                    style: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0,
                     ),
-                    onSubmitted: (_) => _createTask(),
                   ),
-              ],
+                  const SizedBox(height: 10),
+                  if (canAddTask)
+                    TextField(
+                      controller: _newTaskController,
+                      focusNode: _newTaskFocus,
+                      textInputAction: TextInputAction.done,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.add_rounded),
+                        hintText: 'New task',
+                        border: OutlineInputBorder(),
+                        isDense: true,
+                      ),
+                      onSubmitted: (_) => _createTask(),
+                    ),
+                ],
+              ),
             ),
-          ),
-          if (appState.loading) const LinearProgressIndicator(minHeight: 2),
-          Expanded(
-            child: appState.tasks.isEmpty
-                ? _EmptyState(
-                    icon: Icons.check_circle_outline,
-                    title: 'No tasks here',
-                    message: canAddTask
-                        ? 'Add a task and keep moving.'
-                        : 'This list is built from task dates or completed tasks.',
-                  )
-                : ListView.separated(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 18),
-                    itemCount: appState.tasks.length,
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 4),
-                    itemBuilder: (context, index) {
-                      final task = appState.tasks[index];
-                      return _TaskRow(
-                        task: task,
-                        selected: appState.selectedTaskId == task.id,
-                        project: appState.projectById(task.projectId),
-                        area: appState.areaById(task.areaId),
-                        onTap: () => appState.selectTask(task.id),
-                        onCompleted: (completed) =>
-                            appState.setTaskCompleted(task, completed),
-                        onAddTime: () => _addTimeForTask(task),
-                      );
-                    },
-                  ),
-          ),
-        ],
+            if (appState.loading) const LinearProgressIndicator(minHeight: 2),
+            Expanded(
+              child: appState.tasks.isEmpty
+                  ? _EmptyState(
+                      icon: Icons.check_circle_outline,
+                      title: 'No tasks here',
+                      message: canAddTask
+                          ? 'Add a task and keep moving.'
+                          : 'This list is built from task dates or completed tasks.',
+                    )
+                  : ListView.separated(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 18),
+                      itemCount: appState.tasks.length,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 4),
+                      itemBuilder: (context, index) {
+                        final task = appState.tasks[index];
+                        return _TaskRow(
+                          task: task,
+                          selected: appState.selectedTaskId == task.id,
+                          project: appState.projectById(task.projectId),
+                          area: appState.areaById(task.areaId),
+                          onTap: () => _selectTask(task.id),
+                          onCompleted: (completed) =>
+                              appState.setTaskCompleted(task, completed),
+                          onAddTime: () => _addTimeForTask(task),
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  Future<void> _selectTask(int id) async {
+    _paneFocus.requestFocus();
+    await widget.appState.selectTask(id);
+  }
+
+  Future<void> _selectAdjacentTask(int direction) async {
+    if (_newTaskFocus.hasFocus || widget.appState.tasks.isEmpty) return;
+
+    final tasks = widget.appState.tasks;
+    final currentIndex = tasks.indexWhere(
+      (task) => task.id == widget.appState.selectedTaskId,
+    );
+    final nextIndex = currentIndex < 0
+        ? 0
+        : (currentIndex + direction).clamp(0, tasks.length - 1);
+    await widget.appState.selectTask(tasks[nextIndex].id);
   }
 
   Future<void> _createTask() async {
@@ -736,9 +859,12 @@ class _TaskDetailPaneState extends State<_TaskDetailPane> {
               leading: const Icon(Icons.schedule_outlined),
               title: Text(formatDuration(entry.minutes)),
               subtitle: Text(
-                '${formatDate(entry.loggedAt)} ${formatTime(entry.loggedAt)}',
+                entry.note.isEmpty
+                    ? '${formatDate(entry.loggedAt)} ${formatTime(entry.loggedAt)}'
+                    : '${formatDate(entry.loggedAt)} ${formatTime(entry.loggedAt)} · ${entry.note}',
               ),
-              trailing: Text(entry.rawInput),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () => _editTimeEntry(entry),
             ),
       ],
     );
@@ -777,19 +903,23 @@ class _TaskDetailPaneState extends State<_TaskDetailPane> {
     if (cleanTitle.isEmpty) return;
 
     setState(() => _saving = true);
-    await widget.appState.updateSelectedTask(
-      task.copyWith(
-        title: cleanTitle,
-        notes: _notesController.text.trim(),
-        dueDate: _dueDate,
-        tags: _splitTags(_tagsController.text),
-        projectId: _projectId,
-        areaId: _areaId,
-        bucket: _bucket,
-      ),
-    );
-    if (!mounted) return;
-    setState(() => _saving = false);
+    try {
+      await widget.appState.updateSelectedTask(
+        task.copyWith(
+          title: cleanTitle,
+          notes: _notesController.text.trim(),
+          dueDate: _dueDate,
+          tags: _splitTags(_tagsController.text),
+          projectId: _projectId,
+          areaId: _areaId,
+          bucket: _bucket,
+        ),
+      );
+    } finally {
+      if (mounted) {
+        setState(() => _saving = false);
+      }
+    }
   }
 
   Future<void> _addChecklistItem() async {
@@ -798,6 +928,10 @@ class _TaskDetailPaneState extends State<_TaskDetailPane> {
 
     _checklistController.clear();
     await widget.appState.addChecklistItem(title);
+  }
+
+  Future<void> _editTimeEntry(TimeEntry entry) async {
+    await _showEditTimeEntryDialog(context, widget.appState, entry);
   }
 }
 
@@ -969,7 +1103,7 @@ class _ReportPaneState extends State<_ReportPane> {
 
   Project? _selectedReportProject(AppState appState) {
     if (appState.projects.isEmpty) return null;
-    return appState.projectById(appState.selectedProjectId) ??
+    return appState.projectById(appState.selectedReportProjectId) ??
         appState.projects.first;
   }
 
@@ -1068,6 +1202,31 @@ class _ListHeader extends StatelessWidget {
   }
 }
 
+class _QuickEntryShortcutTile extends StatelessWidget {
+  const _QuickEntryShortcutTile({required this.shortcut, required this.onTap});
+
+  final QuickEntryShortcut shortcut;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      dense: true,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      leading: const Icon(Icons.keyboard_outlined, size: 20),
+      title: const Text('Quick Entry'),
+      trailing: Text(
+        shortcut.label(),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+      onTap: onTap,
+    );
+  }
+}
+
 class _SidebarEmpty extends StatelessWidget {
   const _SidebarEmpty({required this.label});
 
@@ -1134,16 +1293,18 @@ class _EmptyState extends StatelessWidget {
   }
 }
 
-class _TimeLogDialog extends StatefulWidget {
-  const _TimeLogDialog();
+class _QuickEntryDialog extends StatefulWidget {
+  const _QuickEntryDialog({required this.appState});
+
+  final AppState appState;
 
   @override
-  State<_TimeLogDialog> createState() => _TimeLogDialogState();
+  State<_QuickEntryDialog> createState() => _QuickEntryDialogState();
 }
 
-class _TimeLogDialogState extends State<_TimeLogDialog> {
+class _QuickEntryDialogState extends State<_QuickEntryDialog> {
   final _controller = TextEditingController();
-  String? _error;
+  bool _saving = false;
 
   @override
   void dispose() {
@@ -1154,18 +1315,222 @@ class _TimeLogDialogState extends State<_TimeLogDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Log time'),
+      title: const Text('Quick Entry'),
       content: SizedBox(
-        width: 360,
+        width: 420,
+        child: TextField(
+          controller: _controller,
+          autofocus: true,
+          textInputAction: TextInputAction.done,
+          decoration: const InputDecoration(
+            hintText: 'New task',
+            border: OutlineInputBorder(),
+          ),
+          onSubmitted: (_) => _submit(),
+        ),
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: _saving ? null : () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+        FilledButton(
+          onPressed: _saving ? null : _submit,
+          child: const Text('Save'),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _submit() async {
+    final title = _controller.text.trim();
+    if (title.isEmpty || _saving) return;
+
+    setState(() => _saving = true);
+    await widget.appState.createInboxTask(title);
+    if (!mounted) return;
+    Navigator.of(context).pop();
+  }
+}
+
+class _ShortcutRecorderDialog extends StatefulWidget {
+  const _ShortcutRecorderDialog({required this.initialShortcut});
+
+  final QuickEntryShortcut initialShortcut;
+
+  @override
+  State<_ShortcutRecorderDialog> createState() =>
+      _ShortcutRecorderDialogState();
+}
+
+class _ShortcutRecorderDialogState extends State<_ShortcutRecorderDialog> {
+  final _focusNode = FocusNode();
+  late QuickEntryShortcut _shortcut;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _shortcut = widget.initialShortcut;
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Quick Entry Shortcut'),
+      content: KeyboardListener(
+        focusNode: _focusNode,
+        autofocus: true,
+        onKeyEvent: _recordShortcut,
+        child: Container(
+          width: 360,
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            border: Border.all(color: Theme.of(context).dividerColor),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                _shortcut.label(),
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              if (_error != null) ...<Widget>[
+                const SizedBox(height: 8),
+                Text(
+                  _error!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+        FilledButton(
+          onPressed: () => Navigator.of(context).pop(_shortcut),
+          child: const Text('Save'),
+        ),
+      ],
+    );
+  }
+
+  void _recordShortcut(KeyEvent event) {
+    if (event is! KeyDownEvent) return;
+    if (_isModifierKey(event.logicalKey)) return;
+
+    final key = _shortcutKeyName(event.logicalKey);
+    if (key == null) {
+      setState(() => _error = 'Unsupported key.');
+      return;
+    }
+
+    final pressed = HardwareKeyboard.instance.logicalKeysPressed;
+    final shortcut = QuickEntryShortcut(
+      key: key,
+      meta:
+          pressed.contains(LogicalKeyboardKey.metaLeft) ||
+          pressed.contains(LogicalKeyboardKey.metaRight),
+      control:
+          pressed.contains(LogicalKeyboardKey.controlLeft) ||
+          pressed.contains(LogicalKeyboardKey.controlRight),
+      alt:
+          pressed.contains(LogicalKeyboardKey.altLeft) ||
+          pressed.contains(LogicalKeyboardKey.altRight),
+      shift:
+          pressed.contains(LogicalKeyboardKey.shiftLeft) ||
+          pressed.contains(LogicalKeyboardKey.shiftRight),
+    );
+
+    if (!shortcut.hasModifier) {
+      setState(() => _error = 'Use at least one modifier.');
+      return;
+    }
+
+    setState(() {
+      _shortcut = shortcut;
+      _error = null;
+    });
+  }
+}
+
+class _TimeEntryDialogResult {
+  const _TimeEntryDialogResult({
+    required this.durationInput,
+    required this.loggedAt,
+    required this.note,
+    this.delete = false,
+  });
+
+  final String durationInput;
+  final DateTime loggedAt;
+  final String note;
+  final bool delete;
+}
+
+class _TimeEntryDialog extends StatefulWidget {
+  const _TimeEntryDialog({this.entry});
+
+  final TimeEntry? entry;
+
+  @override
+  State<_TimeEntryDialog> createState() => _TimeEntryDialogState();
+}
+
+class _TimeEntryDialogState extends State<_TimeEntryDialog> {
+  final _durationController = TextEditingController();
+  final _noteController = TextEditingController();
+  late DateTime _loggedAt;
+  String? _error;
+
+  bool get _editing => widget.entry != null;
+
+  @override
+  void initState() {
+    super.initState();
+    final entry = widget.entry;
+    _durationController.text = entry?.rawInput ?? '';
+    _noteController.text = entry?.note ?? '';
+    _loggedAt = entry?.loggedAt ?? DateTime.now();
+  }
+
+  @override
+  void dispose() {
+    _durationController.dispose();
+    _noteController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(_editing ? 'Edit time' : 'Log time'),
+      content: SizedBox(
+        width: 380,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TextField(
-              controller: _controller,
+              controller: _durationController,
               autofocus: true,
               decoration: InputDecoration(
-                labelText: 'Time',
+                labelText: 'Duration',
                 hintText: '15m, 30m, 1h, 2h, 1w',
                 errorText: _error,
                 border: const OutlineInputBorder(),
@@ -1186,11 +1551,30 @@ class _TimeLogDialogState extends State<_TimeLogDialog> {
                   ActionChip(
                     label: Text(value),
                     onPressed: () {
-                      _controller.text = value;
-                      _submit();
+                      _durationController.text = value;
+                      _durationController.selection = TextSelection.collapsed(
+                        offset: value.length,
+                      );
                     },
                   ),
               ],
+            ),
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: _pickDate,
+              icon: const Icon(Icons.event_outlined),
+              label: Text(formatDate(_loggedAt)),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _noteController,
+              minLines: 2,
+              maxLines: 4,
+              decoration: const InputDecoration(
+                labelText: 'Note',
+                alignLabelWithHint: true,
+                border: OutlineInputBorder(),
+              ),
             ),
             const SizedBox(height: 8),
             Text(
@@ -1204,36 +1588,128 @@ class _TimeLogDialogState extends State<_TimeLogDialog> {
         ),
       ),
       actions: <Widget>[
+        if (_editing)
+          TextButton(
+            onPressed: _delete,
+            child: Text(
+              'Delete',
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
+            ),
+          ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
           child: const Text('Cancel'),
         ),
-        FilledButton(onPressed: _submit, child: const Text('Add')),
+        FilledButton(
+          onPressed: _submit,
+          child: Text(_editing ? 'Save' : 'Add'),
+        ),
       ],
     );
   }
 
+  Future<void> _pickDate() async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _loggedAt,
+      firstDate: DateTime(_loggedAt.year - 10),
+      lastDate: DateTime(_loggedAt.year + 20),
+    );
+    if (!mounted || picked == null) return;
+
+    setState(() {
+      _loggedAt = DateTime(
+        picked.year,
+        picked.month,
+        picked.day,
+        _loggedAt.hour,
+        _loggedAt.minute,
+        _loggedAt.second,
+        _loggedAt.millisecond,
+      );
+    });
+  }
+
   void _submit() {
-    final value = _controller.text.trim();
+    final value = _durationController.text.trim();
     if (parseTimeInput(value) == null) {
       setState(() => _error = 'Use 15m, 30m, 1h, 2h, or 1w.');
       return;
     }
-    Navigator.of(context).pop(value);
+
+    Navigator.of(context).pop(
+      _TimeEntryDialogResult(
+        durationInput: value,
+        loggedAt: _loggedAt,
+        note: _noteController.text,
+      ),
+    );
+  }
+
+  void _delete() {
+    Navigator.of(context).pop(
+      _TimeEntryDialogResult(
+        durationInput: widget.entry!.rawInput,
+        loggedAt: widget.entry!.loggedAt,
+        note: widget.entry!.note,
+        delete: true,
+      ),
+    );
   }
 }
 
 Future<void> _showTimeLogDialog(BuildContext context, AppState appState) async {
-  final input = await showDialog<String>(
+  final result = await showDialog<_TimeEntryDialogResult>(
     context: context,
-    builder: (_) => const _TimeLogDialog(),
+    builder: (_) => const _TimeEntryDialog(),
   );
-  if (input == null) return;
+  if (result == null) return;
 
-  final error = await appState.addTimeEntry(input);
+  final error = await appState.addTimeEntryWithDetails(
+    durationInput: result.durationInput,
+    loggedAt: result.loggedAt,
+    note: result.note,
+  );
   if (!context.mounted || error == null) return;
 
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
+}
+
+Future<void> _showEditTimeEntryDialog(
+  BuildContext context,
+  AppState appState,
+  TimeEntry entry,
+) async {
+  final result = await showDialog<_TimeEntryDialogResult>(
+    context: context,
+    builder: (_) => _TimeEntryDialog(entry: entry),
+  );
+  if (result == null) return;
+
+  if (result.delete) {
+    await appState.deleteTimeEntry(entry.id);
+    return;
+  }
+
+  final error = await appState.updateTimeEntry(
+    entry: entry,
+    durationInput: result.durationInput,
+    loggedAt: result.loggedAt,
+    note: result.note,
+  );
+  if (!context.mounted || error == null) return;
+
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
+}
+
+Future<void> _showQuickEntryDialog(
+  BuildContext context,
+  AppState appState,
+) async {
+  await showDialog<void>(
+    context: context,
+    builder: (_) => _QuickEntryDialog(appState: appState),
+  );
 }
 
 Future<void> _showNameDialog({
@@ -1275,7 +1751,34 @@ Future<void> _showNameDialog({
   await onCreate(name);
 }
 
+bool _isModifierKey(LogicalKeyboardKey key) {
+  return key == LogicalKeyboardKey.metaLeft ||
+      key == LogicalKeyboardKey.metaRight ||
+      key == LogicalKeyboardKey.controlLeft ||
+      key == LogicalKeyboardKey.controlRight ||
+      key == LogicalKeyboardKey.altLeft ||
+      key == LogicalKeyboardKey.altRight ||
+      key == LogicalKeyboardKey.shiftLeft ||
+      key == LogicalKeyboardKey.shiftRight;
+}
+
+String? _shortcutKeyName(LogicalKeyboardKey key) {
+  if (key == LogicalKeyboardKey.space) return 'space';
+  if (key == LogicalKeyboardKey.enter) return 'enter';
+  if (key == LogicalKeyboardKey.tab) return 'tab';
+  if (key == LogicalKeyboardKey.escape) return 'escape';
+  if (key == LogicalKeyboardKey.backspace) return 'backspace';
+
+  final label = key.keyLabel.toLowerCase();
+  if (RegExp(r'^[a-z0-9]$').hasMatch(label)) return label;
+  return null;
+}
+
 String _workspaceTitle(AppState appState) {
+  if (appState.section == AppSection.reports) {
+    return sectionLabel(appState.section);
+  }
+
   if (appState.selectedProjectId != null) {
     return appState.projectById(appState.selectedProjectId)?.name ?? 'Project';
   }

@@ -12,6 +12,7 @@ class AppState extends ChangeNotifier {
   int? selectedProjectId;
   int? selectedAreaId;
   int? selectedTaskId;
+  int? selectedReportProjectId;
 
   List<Project> projects = <Project>[];
   List<Area> areas = <Area>[];
@@ -19,18 +20,22 @@ class AppState extends ChangeNotifier {
   TaskDetail? selectedTask;
   List<ReportRow> reportRows = <ReportRow>[];
   ReportGrouping reportGrouping = ReportGrouping.week;
+  QuickEntryShortcut quickEntryShortcut = QuickEntryShortcut.defaultShortcut;
 
   bool loading = false;
   String? error;
 
   Future<void> initialize() async {
+    quickEntryShortcut = await _database.quickEntryShortcut();
     await refreshAll();
   }
 
-  Future<void> refreshAll() async {
-    loading = true;
+  Future<void> refreshAll({bool showLoading = true}) async {
     error = null;
-    notifyListeners();
+    if (showLoading) {
+      loading = true;
+      notifyListeners();
+    }
 
     try {
       projects = await _database.projects();
@@ -45,7 +50,9 @@ class AppState extends ChangeNotifier {
     } catch (exception) {
       error = exception.toString();
     } finally {
-      loading = false;
+      if (showLoading) {
+        loading = false;
+      }
       notifyListeners();
     }
   }
@@ -97,6 +104,23 @@ class AppState extends ChangeNotifier {
     await refreshAll();
   }
 
+  Future<void> createInboxTask(String title) async {
+    final cleanTitle = title.trim();
+    if (cleanTitle.isEmpty) return;
+
+    final id = await _database.createTask(
+      title: cleanTitle,
+      bucket: TaskBucket.inbox,
+    );
+
+    if (section == AppSection.inbox &&
+        selectedProjectId == null &&
+        selectedAreaId == null) {
+      selectedTaskId = id;
+    }
+    await refreshAll(showLoading: false);
+  }
+
   Future<void> createProject(String name) async {
     final cleanName = name.trim();
     if (cleanName.isEmpty) return;
@@ -138,10 +162,18 @@ class AppState extends ChangeNotifier {
   }
 
   Future<String?> addTimeEntry(String input) async {
+    return addTimeEntryWithDetails(durationInput: input);
+  }
+
+  Future<String?> addTimeEntryWithDetails({
+    required String durationInput,
+    DateTime? loggedAt,
+    String note = '',
+  }) async {
     final taskId = selectedTaskId;
     if (taskId == null) return 'Select a task first.';
 
-    final minutes = parseTimeInput(input);
+    final minutes = parseTimeInput(durationInput);
     if (minutes == null) {
       return 'Use formats like 15m, 30m, 1h, 2h, 1w.';
     }
@@ -149,10 +181,48 @@ class AppState extends ChangeNotifier {
     await _database.addTimeEntry(
       taskId: taskId,
       minutes: minutes,
-      rawInput: input.trim(),
+      rawInput: durationInput.trim(),
+      loggedAt: loggedAt,
+      note: note.trim(),
     );
-    await refreshAll();
+    await refreshAll(showLoading: false);
     return null;
+  }
+
+  Future<String?> updateTimeEntry({
+    required TimeEntry entry,
+    required String durationInput,
+    required DateTime loggedAt,
+    required String note,
+  }) async {
+    final minutes = parseTimeInput(durationInput);
+    if (minutes == null) {
+      return 'Use formats like 15m, 30m, 1h, 2h, 1w.';
+    }
+
+    await _database.updateTimeEntry(
+      TimeEntry(
+        id: entry.id,
+        taskId: entry.taskId,
+        minutes: minutes,
+        rawInput: durationInput.trim(),
+        loggedAt: loggedAt,
+        note: note.trim(),
+      ),
+    );
+    await refreshAll(showLoading: false);
+    return null;
+  }
+
+  Future<void> deleteTimeEntry(int id) async {
+    await _database.deleteTimeEntry(id);
+    await refreshAll(showLoading: false);
+  }
+
+  Future<void> updateQuickEntryShortcut(QuickEntryShortcut shortcut) async {
+    quickEntryShortcut = shortcut;
+    await _database.setQuickEntryShortcut(shortcut);
+    notifyListeners();
   }
 
   Future<void> setReportGrouping(ReportGrouping grouping) async {
@@ -162,7 +232,7 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> setReportProject(int projectId) async {
-    selectedProjectId = projectId;
+    selectedReportProjectId = projectId;
     await refreshReport();
     notifyListeners();
   }
@@ -173,7 +243,7 @@ class AppState extends ChangeNotifier {
       return;
     }
 
-    final projectId = selectedProjectId ?? projects.first.id;
+    final projectId = selectedReportProjectId ?? projects.first.id;
     reportRows = await _database.reportRows(
       projectId: projectId,
       grouping: reportGrouping,
@@ -200,6 +270,17 @@ class AppState extends ChangeNotifier {
 
   Future<void> _refreshSelectedTask() async {
     if (selectedTaskId == null) {
+      selectedTask = tasks.isEmpty
+          ? null
+          : await _database.taskDetail(tasks.first.id);
+      selectedTaskId = selectedTask?.task.id;
+      return;
+    }
+
+    final selectedTaskIsVisible = tasks.any(
+      (task) => task.id == selectedTaskId,
+    );
+    if (!selectedTaskIsVisible) {
       selectedTask = tasks.isEmpty
           ? null
           : await _database.taskDetail(tasks.first.id);

@@ -14,6 +14,100 @@ enum AppSection {
 
 enum ReportGrouping { day, week, month, custom }
 
+class QuickEntryShortcut {
+  const QuickEntryShortcut({
+    required this.key,
+    this.meta = false,
+    this.control = false,
+    this.alt = false,
+    this.shift = false,
+  });
+
+  static const defaultShortcut = QuickEntryShortcut(
+    key: 'space',
+    control: true,
+  );
+
+  final String key;
+  final bool meta;
+  final bool control;
+  final bool alt;
+  final bool shift;
+
+  bool get hasModifier => meta || control || alt || shift;
+
+  String serialize() {
+    final parts = <String>[
+      if (meta) 'meta',
+      if (control) 'control',
+      if (alt) 'alt',
+      if (shift) 'shift',
+      key,
+    ];
+    return parts.join('+');
+  }
+
+  String label() {
+    final parts = <String>[
+      if (control) '⌃',
+      if (alt) '⌥',
+      if (shift) '⇧',
+      if (meta) '⌘',
+      _keyLabel(key),
+    ];
+    return parts.join('');
+  }
+
+  Map<String, Object> toPlatformArguments() {
+    return <String, Object>{
+      'key': key,
+      'meta': meta,
+      'control': control,
+      'alt': alt,
+      'shift': shift,
+    };
+  }
+
+  static QuickEntryShortcut? parse(String value) {
+    final parts = value
+        .split('+')
+        .map((part) => part.trim().toLowerCase())
+        .where((part) => part.isNotEmpty)
+        .toList();
+    if (parts.isEmpty) return null;
+
+    final key = parts.last;
+    final modifiers = parts.take(parts.length - 1).toSet();
+    final shortcut = QuickEntryShortcut(
+      key: key,
+      meta: modifiers.contains('meta') || modifiers.contains('command'),
+      control: modifiers.contains('control') || modifiers.contains('ctrl'),
+      alt: modifiers.contains('alt') || modifiers.contains('option'),
+      shift: modifiers.contains('shift'),
+    );
+
+    return shortcut.hasModifier ? shortcut : null;
+  }
+
+  static String _keyLabel(String key) {
+    switch (key) {
+      case 'space':
+        return 'Space';
+      case 'enter':
+        return 'Enter';
+      case 'tab':
+        return 'Tab';
+      case 'escape':
+        return 'Esc';
+      case 'backspace':
+        return 'Delete';
+      default:
+        if (key.length == 1) return key.toUpperCase();
+        return key;
+    }
+  }
+}
+
 class Area {
   const Area({required this.id, required this.name});
 
@@ -114,6 +208,7 @@ class TimeEntry {
     required this.minutes,
     required this.rawInput,
     required this.loggedAt,
+    this.note = '',
   });
 
   final int id;
@@ -121,6 +216,7 @@ class TimeEntry {
   final int minutes;
   final String rawInput;
   final DateTime loggedAt;
+  final String note;
 }
 
 class TaskDetail {

@@ -23,6 +23,23 @@ void main() {
     });
   });
 
+  group('quick entry shortcut', () {
+    test('serializes and parses shortcut settings', () {
+      const shortcut = QuickEntryShortcut(
+        key: 'space',
+        meta: true,
+        shift: true,
+      );
+
+      expect(shortcut.serialize(), 'meta+shift+space');
+      expect(
+        QuickEntryShortcut.parse(shortcut.serialize())?.label(),
+        '⇧⌘Space',
+      );
+      expect(QuickEntryShortcut.parse('space'), isNull);
+    });
+  });
+
   test('stores tasks and aggregates project time locally', () async {
     final directory = await Directory.systemTemp.createTemp(
       'work_memory_test_',
@@ -45,16 +62,20 @@ void main() {
         taskId: taskId,
         minutes: parseTimeInput('15m')!,
         rawInput: '15m',
+        loggedAt: DateTime(2026, 7, 8, 9),
+        note: 'Supplier call',
       );
       await database.addTimeEntry(
         taskId: taskId,
         minutes: parseTimeInput('1h')!,
         rawInput: '1h',
+        loggedAt: DateTime(2026, 7, 8, 10),
       );
 
       final detail = await database.taskDetail(taskId);
       expect(detail?.task.totalLoggedMinutes, 75);
       expect(detail?.timeEntries, hasLength(2));
+      expect(detail?.timeEntries.last.note, 'Supplier call');
 
       final rows = await database.reportRows(
         projectId: projectId,
@@ -64,6 +85,30 @@ void main() {
       );
 
       expect(rows.fold<int>(0, (total, row) => total + row.minutes), 75);
+
+      await database.updateTimeEntry(
+        TimeEntry(
+          id: detail!.timeEntries.first.id,
+          taskId: taskId,
+          minutes: parseTimeInput('2h')!,
+          rawInput: '2h',
+          loggedAt: DateTime(2026, 7, 8, 10),
+          note: 'Updated',
+        ),
+      );
+
+      final updated = await database.taskDetail(taskId);
+      expect(updated?.task.totalLoggedMinutes, 135);
+      expect(updated?.timeEntries.first.note, 'Updated');
+
+      await database.deleteTimeEntry(updated!.timeEntries.first.id);
+
+      final deleted = await database.taskDetail(taskId);
+      expect(deleted?.task.totalLoggedMinutes, 15);
+
+      const shortcut = QuickEntryShortcut(key: 'n', control: true);
+      await database.setQuickEntryShortcut(shortcut);
+      expect((await database.quickEntryShortcut()).serialize(), 'control+n');
     } finally {
       await database.close();
       await directory.delete(recursive: true);

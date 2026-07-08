@@ -21,7 +21,7 @@ class LocalDatabase {
     _db = await factory.openDatabase(
       path,
       options: sqlite.OpenDatabaseOptions(
-        version: 1,
+        version: 2,
         onCreate: (db, version) async {
           await db.execute('''
             CREATE TABLE areas (
@@ -70,7 +70,15 @@ class LocalDatabase {
               task_id INTEGER NOT NULL,
               minutes INTEGER NOT NULL,
               raw_input TEXT NOT NULL,
-              logged_at INTEGER NOT NULL
+              logged_at INTEGER NOT NULL,
+              note TEXT NOT NULL DEFAULT ''
+            )
+          ''');
+
+          await db.execute('''
+            CREATE TABLE settings (
+              key TEXT PRIMARY KEY,
+              value TEXT NOT NULL
             )
           ''');
 
@@ -80,6 +88,19 @@ class LocalDatabase {
           await db.execute(
             'CREATE INDEX time_entries_task_idx ON time_entries(task_id)',
           );
+        },
+        onUpgrade: (db, oldVersion, newVersion) async {
+          if (oldVersion < 2) {
+            await db.execute(
+              "ALTER TABLE time_entries ADD COLUMN note TEXT NOT NULL DEFAULT ''",
+            );
+            await db.execute('''
+              CREATE TABLE IF NOT EXISTS settings (
+                key TEXT PRIMARY KEY,
+                value TEXT NOT NULL
+              )
+            ''');
+          }
         },
       ),
     );
@@ -220,13 +241,59 @@ class LocalDatabase {
     required int taskId,
     required int minutes,
     required String rawInput,
+    DateTime? loggedAt,
+    String note = '',
   }) {
     return _db.insert('time_entries', <String, Object?>{
       'task_id': taskId,
       'minutes': minutes,
       'raw_input': rawInput,
-      'logged_at': DateTime.now().millisecondsSinceEpoch,
+      'logged_at': (loggedAt ?? DateTime.now()).millisecondsSinceEpoch,
+      'note': note,
     });
+  }
+
+  Future<void> updateTimeEntry(TimeEntry entry) {
+    return _db.update(
+      'time_entries',
+      <String, Object?>{
+        'minutes': entry.minutes,
+        'raw_input': entry.rawInput,
+        'logged_at': entry.loggedAt.millisecondsSinceEpoch,
+        'note': entry.note,
+      },
+      where: 'id = ?',
+      whereArgs: <Object?>[entry.id],
+    );
+  }
+
+  Future<void> deleteTimeEntry(int id) {
+    return _db.delete(
+      'time_entries',
+      where: 'id = ?',
+      whereArgs: <Object?>[id],
+    );
+  }
+
+  Future<QuickEntryShortcut> quickEntryShortcut() async {
+    final rows = await _db.query(
+      'settings',
+      columns: <String>['value'],
+      where: 'key = ?',
+      whereArgs: <Object?>['quick_entry_shortcut'],
+      limit: 1,
+    );
+    if (rows.isEmpty) return QuickEntryShortcut.defaultShortcut;
+
+    return QuickEntryShortcut.parse(rows.single['value']! as String) ??
+        QuickEntryShortcut.defaultShortcut;
+  }
+
+  Future<void> setQuickEntryShortcut(QuickEntryShortcut shortcut) {
+    return _db.insert('settings', <String, Object?>{
+      'key': 'quick_entry_shortcut',
+      'value': shortcut.serialize(),
+    }, conflictAlgorithm: sqlite.ConflictAlgorithm.replace);
   }
 
   Future<List<ReportRow>> reportRows({
@@ -435,6 +502,7 @@ class LocalDatabase {
       minutes: row['minutes']! as int,
       rawInput: row['raw_input']! as String,
       loggedAt: DateTime.fromMillisecondsSinceEpoch(row['logged_at']! as int),
+      note: row['note']! as String,
     );
   }
 
