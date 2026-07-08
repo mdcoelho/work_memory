@@ -5,6 +5,17 @@ import '../models.dart';
 import '../platform/quick_entry_service.dart';
 import '../state/app_state.dart';
 
+const _motion = Duration(milliseconds: 180);
+const _curve = Curves.easeOutCubic;
+const _surface = Color(0xFFF7F5F0);
+const _sidebarSurface = Color(0xFFEFEBE4);
+const _selectedSurface = Color(0xFFDDE9E7);
+const _hoverSurface = Color(0xFFF0EDE7);
+const _textPrimary = Color(0xFF24211C);
+const _textSecondary = Color(0xFF746F66);
+const _hairline = Color(0xFFE4E0D8);
+const _accent = Color(0xFF315D72);
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({required this.appState, super.key});
 
@@ -68,19 +79,22 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: compact
           ? AppBar(title: Text(_workspaceTitle(appState)), centerTitle: false)
           : null,
-      body: Row(
-        children: <Widget>[
-          if (!compact)
-            SizedBox(
-              width: 260,
-              child: _Sidebar(
-                appState: appState,
-                onEditQuickEntryShortcut: _editQuickEntryShortcut,
+      body: DecoratedBox(
+        decoration: const BoxDecoration(color: _surface),
+        child: Row(
+          children: <Widget>[
+            if (!compact)
+              SizedBox(
+                width: 268,
+                child: _Sidebar(
+                  appState: appState,
+                  onEditQuickEntryShortcut: _editQuickEntryShortcut,
+                ),
               ),
-            ),
-          if (!compact) const VerticalDivider(width: 1),
-          Expanded(child: content),
-        ],
+            if (!compact) const VerticalDivider(width: 1),
+            Expanded(child: content),
+          ],
+        ),
       ),
     );
   }
@@ -131,146 +145,162 @@ class _Sidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: <Widget>[
-          const SizedBox(height: 12),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: 28,
-                  height: 28,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: const Icon(
-                    Icons.check_rounded,
-                    size: 18,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                const Expanded(
-                  child: Text(
-                    'Work Memory',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 12),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              children: <Widget>[
-                _SectionTile(
-                  icon: Icons.inbox_outlined,
-                  label: 'Inbox',
-                  selected: _isSectionSelected(appState, AppSection.inbox),
-                  onTap: () => _selectSection(context, AppSection.inbox),
-                ),
-                _SectionTile(
-                  icon: Icons.today_outlined,
-                  label: 'Today',
-                  selected: _isSectionSelected(appState, AppSection.today),
-                  onTap: () => _selectSection(context, AppSection.today),
-                ),
-                _SectionTile(
-                  icon: Icons.calendar_month_outlined,
-                  label: 'Upcoming',
-                  selected: _isSectionSelected(appState, AppSection.upcoming),
-                  onTap: () => _selectSection(context, AppSection.upcoming),
-                ),
-                _SectionTile(
-                  icon: Icons.inventory_2_outlined,
-                  label: 'Anytime',
-                  selected: _isSectionSelected(appState, AppSection.anytime),
-                  onTap: () => _selectSection(context, AppSection.anytime),
-                ),
-                _SectionTile(
-                  icon: Icons.archive_outlined,
-                  label: 'Someday',
-                  selected: _isSectionSelected(appState, AppSection.someday),
-                  onTap: () => _selectSection(context, AppSection.someday),
-                ),
-                _SectionTile(
-                  icon: Icons.done_all_outlined,
-                  label: 'Logbook',
-                  selected: _isSectionSelected(appState, AppSection.completed),
-                  onTap: () => _selectSection(context, AppSection.completed),
-                ),
-                _SectionTile(
-                  icon: Icons.bar_chart_outlined,
-                  label: 'Reports',
-                  selected: _isSectionSelected(appState, AppSection.reports),
-                  onTap: () => _selectSection(context, AppSection.reports),
-                ),
-                const SizedBox(height: 18),
-                _ListHeader(
-                  label: 'Projects',
-                  onAdd: () => _showNameDialog(
-                    context: context,
-                    title: 'New project',
-                    onCreate: appState.createProject,
-                  ),
-                ),
-                if (appState.projects.isEmpty)
-                  const _SidebarEmpty(label: 'No projects'),
-                for (final project in appState.projects)
-                  _SectionTile(
-                    icon: Icons.folder_outlined,
-                    label: project.name,
-                    selected:
-                        appState.section == AppSection.projects &&
-                        appState.selectedProjectId == project.id,
-                    onTap: () => _selectProject(context, project.id),
-                  ),
-                const SizedBox(height: 12),
-                _ListHeader(
-                  label: 'Areas',
-                  onAdd: () => _showNameDialog(
-                    context: context,
-                    title: 'New area',
-                    onCreate: appState.createArea,
-                  ),
-                ),
-                if (appState.areas.isEmpty)
-                  const _SidebarEmpty(label: 'No areas'),
-                for (final area in appState.areas)
-                  _SectionTile(
-                    icon: Icons.grid_view_outlined,
-                    label: area.name,
-                    selected:
-                        appState.section == AppSection.areas &&
-                        appState.selectedAreaId == area.id,
-                    onTap: () => _selectArea(context, area.id),
-                  ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
-            child: _QuickEntryShortcutTile(
-              shortcut: appState.quickEntryShortcut,
-              onTap: onEditQuickEntryShortcut,
-            ),
-          ),
-          if (appState.error != null)
+    return DecoratedBox(
+      decoration: const BoxDecoration(color: _sidebarSurface),
+      child: SafeArea(
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 14),
             Padding(
-              padding: const EdgeInsets.all(12),
-              child: Text(
-                appState.error!,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.error,
-                  fontSize: 12,
-                ),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 26,
+                    height: 26,
+                    decoration: BoxDecoration(
+                      color: _accent,
+                      borderRadius: BorderRadius.circular(7),
+                      boxShadow: const <BoxShadow>[
+                        BoxShadow(
+                          color: Color(0x1E000000),
+                          blurRadius: 8,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.check_rounded,
+                      size: 17,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  const Expanded(
+                    child: Text(
+                      'Work Memory',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-        ],
+            const SizedBox(height: 14),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                children: <Widget>[
+                  _SectionTile(
+                    icon: Icons.inbox_outlined,
+                    label: 'Inbox',
+                    selected: _isSectionSelected(appState, AppSection.inbox),
+                    onTap: () => _selectSection(context, AppSection.inbox),
+                  ),
+                  _SectionTile(
+                    icon: Icons.today_outlined,
+                    label: 'Today',
+                    selected: _isSectionSelected(appState, AppSection.today),
+                    onTap: () => _selectSection(context, AppSection.today),
+                  ),
+                  _SectionTile(
+                    icon: Icons.calendar_month_outlined,
+                    label: 'Upcoming',
+                    selected: _isSectionSelected(appState, AppSection.upcoming),
+                    onTap: () => _selectSection(context, AppSection.upcoming),
+                  ),
+                  _SectionTile(
+                    icon: Icons.inventory_2_outlined,
+                    label: 'Anytime',
+                    selected: _isSectionSelected(appState, AppSection.anytime),
+                    onTap: () => _selectSection(context, AppSection.anytime),
+                  ),
+                  _SectionTile(
+                    icon: Icons.archive_outlined,
+                    label: 'Someday',
+                    selected: _isSectionSelected(appState, AppSection.someday),
+                    onTap: () => _selectSection(context, AppSection.someday),
+                  ),
+                  _SectionTile(
+                    icon: Icons.done_all_outlined,
+                    label: 'Logbook',
+                    selected: _isSectionSelected(
+                      appState,
+                      AppSection.completed,
+                    ),
+                    onTap: () => _selectSection(context, AppSection.completed),
+                  ),
+                  _SectionTile(
+                    icon: Icons.bar_chart_outlined,
+                    label: 'Reports',
+                    selected: _isSectionSelected(appState, AppSection.reports),
+                    onTap: () => _selectSection(context, AppSection.reports),
+                  ),
+                  const SizedBox(height: 18),
+                  _ListHeader(
+                    label: 'Projects',
+                    onAdd: () => _showNameDialog(
+                      context: context,
+                      title: 'New project',
+                      onCreate: appState.createProject,
+                    ),
+                  ),
+                  if (appState.projects.isEmpty)
+                    const _SidebarEmpty(label: 'No projects'),
+                  for (final project in appState.projects)
+                    _SectionTile(
+                      icon: Icons.folder_outlined,
+                      label: project.name,
+                      selected:
+                          appState.section == AppSection.projects &&
+                          appState.selectedProjectId == project.id,
+                      onTap: () => _selectProject(context, project.id),
+                    ),
+                  const SizedBox(height: 12),
+                  _ListHeader(
+                    label: 'Areas',
+                    onAdd: () => _showNameDialog(
+                      context: context,
+                      title: 'New area',
+                      onCreate: appState.createArea,
+                    ),
+                  ),
+                  if (appState.areas.isEmpty)
+                    const _SidebarEmpty(label: 'No areas'),
+                  for (final area in appState.areas)
+                    _SectionTile(
+                      icon: Icons.grid_view_outlined,
+                      label: area.name,
+                      selected:
+                          appState.section == AppSection.areas &&
+                          appState.selectedAreaId == area.id,
+                      onTap: () => _selectArea(context, area.id),
+                    ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
+              child: _QuickEntryShortcutTile(
+                shortcut: appState.quickEntryShortcut,
+                onTap: onEditQuickEntryShortcut,
+              ),
+            ),
+            if (appState.error != null)
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Text(
+                  appState.error!,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -322,6 +352,104 @@ class _TaskWorkspace extends StatelessWidget {
         Expanded(child: _TaskDetailPane(appState: appState)),
       ],
     );
+  }
+}
+
+class _WorkspaceTitle extends StatefulWidget {
+  const _WorkspaceTitle({required this.appState});
+
+  final AppState appState;
+
+  @override
+  State<_WorkspaceTitle> createState() => _WorkspaceTitleState();
+}
+
+class _WorkspaceTitleState extends State<_WorkspaceTitle> {
+  final _controller = TextEditingController();
+  final _focusNode = FocusNode();
+  int? _projectId;
+
+  @override
+  void initState() {
+    super.initState();
+    _syncTitle();
+    _focusNode.addListener(_saveIfNeeded);
+  }
+
+  @override
+  void didUpdateWidget(covariant _WorkspaceTitle oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final nextProjectId = widget.appState.selectedProjectId;
+    if (nextProjectId != _projectId) {
+      _syncTitle();
+    }
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_saveIfNeeded);
+    _focusNode.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final project = widget.appState.projectById(
+      widget.appState.selectedProjectId,
+    );
+    if (project == null || widget.appState.section != AppSection.projects) {
+      return AnimatedSwitcher(
+        duration: _motion,
+        switchInCurve: _curve,
+        switchOutCurve: Curves.easeInCubic,
+        child: Text(
+          _workspaceTitle(widget.appState),
+          key: ValueKey<String>(_workspaceTitle(widget.appState)),
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+      );
+    }
+
+    return TextField(
+      controller: _controller,
+      focusNode: _focusNode,
+      textInputAction: TextInputAction.done,
+      style: Theme.of(context).textTheme.headlineMedium,
+      decoration: const InputDecoration(
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _hairline),
+        ),
+        filled: false,
+        isCollapsed: true,
+        contentPadding: EdgeInsets.only(bottom: 4),
+      ),
+      onSubmitted: (_) => _saveProjectName(),
+    );
+  }
+
+  void _syncTitle() {
+    final project = widget.appState.projectById(
+      widget.appState.selectedProjectId,
+    );
+    _projectId = project?.id;
+    _controller.text = project?.name ?? _workspaceTitle(widget.appState);
+  }
+
+  void _saveIfNeeded() {
+    if (!_focusNode.hasFocus) {
+      _saveProjectName();
+    }
+  }
+
+  Future<void> _saveProjectName() async {
+    final project = widget.appState.projectById(
+      widget.appState.selectedProjectId,
+    );
+    if (project == null) return;
+    await widget.appState.updateProjectName(project, _controller.text);
   }
 }
 
@@ -377,27 +505,24 @@ class _TaskListPaneState extends State<_TaskListPane> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    _workspaceTitle(appState),
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
+                  _WorkspaceTitle(appState: appState),
+                  const SizedBox(height: 14),
                   if (canAddTask)
-                    TextField(
-                      controller: _newTaskController,
-                      focusNode: _newTaskFocus,
-                      textInputAction: TextInputAction.done,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.add_rounded),
-                        hintText: 'New task',
-                        border: OutlineInputBorder(),
-                        isDense: true,
+                    AnimatedContainer(
+                      duration: _motion,
+                      curve: _curve,
+                      child: TextField(
+                        controller: _newTaskController,
+                        focusNode: _newTaskFocus,
+                        textInputAction: TextInputAction.done,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.add_rounded, size: 18),
+                          hintText: 'New task',
+                          isDense: true,
+                          filled: true,
+                        ),
+                        onSubmitted: (_) => _createTask(),
                       ),
-                      onSubmitted: (_) => _createTask(),
                     ),
                 ],
               ),
@@ -470,7 +595,7 @@ class _TaskListPaneState extends State<_TaskListPane> {
   }
 }
 
-class _TaskRow extends StatelessWidget {
+class _TaskRow extends StatefulWidget {
   const _TaskRow({
     required this.task,
     required this.selected,
@@ -490,83 +615,194 @@ class _TaskRow extends StatelessWidget {
   final VoidCallback onAddTime;
 
   @override
+  State<_TaskRow> createState() => _TaskRowState();
+}
+
+class _TaskRowState extends State<_TaskRow> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final task = widget.task;
     final metadata = <String>[
       if (task.dueDate != null) formatShortDate(task.dueDate!),
-      if (project != null) project!.name,
-      if (area != null) area!.name,
+      if (widget.project != null) widget.project!.name,
+      if (widget.area != null) widget.area!.name,
       if (task.tags.isNotEmpty) task.tags.join(', '),
     ];
+    final selected = widget.selected;
 
-    return Material(
-      color: selected ? colorScheme.primaryContainer : Colors.transparent,
-      borderRadius: BorderRadius.circular(8),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Checkbox(
-                value: task.completed,
-                onChanged: (value) => onCompleted(value ?? false),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      task.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontWeight: selected
-                            ? FontWeight.w700
-                            : FontWeight.w500,
-                        decoration: task.completed
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
-                      ),
-                    ),
-                    if (metadata.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 2),
-                        child: Text(
-                          metadata.join(' · '),
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: AnimatedContainer(
+        duration: _motion,
+        curve: _curve,
+        decoration: BoxDecoration(
+          color: selected
+              ? _selectedSurface
+              : _hovered
+              ? _hoverSurface.withValues(alpha: 0.72)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: selected
+              ? const <BoxShadow>[
+                  BoxShadow(
+                    color: Color(0x14000000),
+                    blurRadius: 12,
+                    offset: Offset(0, 4),
+                  ),
+                ]
+              : null,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(10),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(10),
+            hoverColor: Colors.transparent,
+            onTap: widget.onTap,
+            onSecondaryTapDown: _showContextMenu,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Checkbox(
+                    value: task.completed,
+                    visualDensity: VisualDensity.compact,
+                    onChanged: (value) => widget.onCompleted(value ?? false),
+                  ),
+                  const SizedBox(width: 2),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          task.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: colorScheme.onSurfaceVariant,
-                            fontSize: 12,
+                            color: _textPrimary,
+                            fontSize: 14.5,
+                            fontWeight: selected
+                                ? FontWeight.w700
+                                : FontWeight.w500,
+                            decoration: task.completed
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none,
+                            decorationColor: _textSecondary,
+                          ),
+                        ),
+                        if (metadata.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 3),
+                            child: Text(
+                              metadata.join(' · '),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: _textSecondary,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  AnimatedOpacity(
+                    duration: _motion,
+                    curve: _curve,
+                    opacity: selected || _hovered || task.totalLoggedMinutes > 0
+                        ? 1
+                        : 0.62,
+                    child: Text(
+                      formatDuration(task.totalLoggedMinutes),
+                      style: const TextStyle(
+                        color: _textSecondary,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  AnimatedScale(
+                    duration: _motion,
+                    curve: _curve,
+                    scale: _hovered || selected ? 1 : 0.96,
+                    child: Tooltip(
+                      message: 'Log time',
+                      child: InkResponse(
+                        radius: 18,
+                        onTap: widget.onAddTime,
+                        child: AnimatedContainer(
+                          duration: _motion,
+                          curve: _curve,
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: _hovered || selected
+                                ? _accent
+                                : Colors.white.withValues(alpha: 0.74),
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              color: _hovered || selected ? _accent : _hairline,
+                            ),
+                            boxShadow: _hovered || selected
+                                ? const <BoxShadow>[
+                                    BoxShadow(
+                                      color: Color(0x22315D72),
+                                      blurRadius: 12,
+                                      offset: Offset(0, 4),
+                                    ),
+                                  ]
+                                : null,
+                          ),
+                          child: Icon(
+                            Icons.add_rounded,
+                            size: 18,
+                            color: _hovered || selected
+                                ? Colors.white
+                                : _accent,
                           ),
                         ),
                       ),
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 8),
-              Text(
-                formatDuration(task.totalLoggedMinutes),
-                style: TextStyle(
-                  color: colorScheme.onSurfaceVariant,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              IconButton(
-                tooltip: 'Log time',
-                visualDensity: VisualDensity.compact,
-                icon: const Icon(Icons.add_rounded),
-                onPressed: onAddTime,
-              ),
-            ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  Future<void> _showContextMenu(TapDownDetails details) async {
+    final selected = await showMenu<String>(
+      context: context,
+      position: RelativeRect.fromLTRB(
+        details.globalPosition.dx,
+        details.globalPosition.dy,
+        details.globalPosition.dx,
+        details.globalPosition.dy,
+      ),
+      items: <PopupMenuEntry<String>>[
+        const PopupMenuItem<String>(value: 'time', child: Text('Log Time')),
+        PopupMenuItem<String>(
+          value: 'complete',
+          child: Text(widget.task.completed ? 'Mark Open' : 'Complete'),
+        ),
+      ],
+    );
+
+    switch (selected) {
+      case 'time':
+        widget.onAddTime();
+      case 'complete':
+        widget.onCompleted(!widget.task.completed);
+    }
   }
 }
 
@@ -630,243 +866,260 @@ class _TaskDetailPaneState extends State<_TaskDetailPane> {
     final task = detail.task;
     final colorScheme = Theme.of(context).colorScheme;
 
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(24, 20, 24, 28),
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            Checkbox(
-              value: task.completed,
-              onChanged: (value) =>
-                  widget.appState.setTaskCompleted(task, value ?? false),
-            ),
-            Expanded(
-              child: TextField(
-                controller: _titleController,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Task title',
-                ),
-                onSubmitted: (_) => _saveTask(task),
+    return AnimatedSwitcher(
+      duration: _motion,
+      switchInCurve: _curve,
+      switchOutCurve: Curves.easeInCubic,
+      child: ListView(
+        key: ValueKey<int>(task.id),
+        padding: const EdgeInsets.fromLTRB(34, 28, 40, 34),
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Checkbox(
+                value: task.completed,
+                onChanged: (value) =>
+                    widget.appState.setTaskCompleted(task, value ?? false),
               ),
-            ),
-            FilledButton.icon(
-              onPressed: _saving ? null : () => _saveTask(task),
-              icon: _saving
-                  ? const SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : const Icon(Icons.save_outlined),
-              label: const Text('Save'),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        Wrap(
-          spacing: 12,
-          runSpacing: 12,
-          children: <Widget>[
-            SizedBox(
-              width: 180,
-              child: DropdownButtonFormField<TaskBucket>(
-                key: ValueKey<String>('bucket-$_taskId'),
-                initialValue: _bucket,
-                decoration: const InputDecoration(
-                  labelText: 'List',
-                  border: OutlineInputBorder(),
-                  isDense: true,
+              Expanded(
+                child: TextField(
+                  controller: _titleController,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    filled: false,
+                    hintText: 'Task title',
+                    isCollapsed: true,
+                  ),
+                  onSubmitted: (_) => _saveTask(task),
                 ),
-                items: TaskBucket.values
-                    .map(
-                      (bucket) => DropdownMenuItem<TaskBucket>(
-                        value: bucket,
-                        child: Text(bucketLabel(bucket)),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
-                  if (value == null) return;
-                  setState(() => _bucket = value);
-                },
               ),
-            ),
-            SizedBox(
-              width: 220,
-              child: DropdownButtonFormField<int?>(
-                key: ValueKey<String>('project-$_taskId'),
-                initialValue: _projectId,
-                decoration: const InputDecoration(
-                  labelText: 'Project',
-                  border: OutlineInputBorder(),
-                  isDense: true,
-                ),
-                items: <DropdownMenuItem<int?>>[
-                  const DropdownMenuItem<int?>(child: Text('No project')),
-                  for (final project in widget.appState.projects)
-                    DropdownMenuItem<int?>(
-                      value: project.id,
-                      child: Text(project.name),
-                    ),
-                ],
-                onChanged: (value) => setState(() => _projectId = value),
-              ),
-            ),
-            SizedBox(
-              width: 220,
-              child: DropdownButtonFormField<int?>(
-                key: ValueKey<String>('area-$_taskId'),
-                initialValue: _areaId,
-                decoration: const InputDecoration(
-                  labelText: 'Area',
-                  border: OutlineInputBorder(),
-                  isDense: true,
-                ),
-                items: <DropdownMenuItem<int?>>[
-                  const DropdownMenuItem<int?>(child: Text('No area')),
-                  for (final area in widget.appState.areas)
-                    DropdownMenuItem<int?>(
-                      value: area.id,
-                      child: Text(area.name),
-                    ),
-                ],
-                onChanged: (value) => setState(() => _areaId = value),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 14),
-        Row(
-          children: <Widget>[
-            OutlinedButton.icon(
-              onPressed: _pickDueDate,
-              icon: const Icon(Icons.event_outlined),
-              label: Text(
-                _dueDate == null ? 'No due date' : formatDate(_dueDate!),
-              ),
-            ),
-            if (_dueDate != null) ...<Widget>[
-              const SizedBox(width: 8),
-              TextButton(
-                onPressed: () => setState(() => _dueDate = null),
-                child: const Text('Clear date'),
+              TextButton.icon(
+                onPressed: _saving ? null : () => _saveTask(task),
+                icon: _saving
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Icons.save_outlined),
+                label: const Text('Save'),
               ),
             ],
-          ],
-        ),
-        const SizedBox(height: 16),
-        TextField(
-          controller: _notesController,
-          minLines: 4,
-          maxLines: 8,
-          decoration: const InputDecoration(
-            labelText: 'Notes',
-            alignLabelWithHint: true,
-            border: OutlineInputBorder(),
           ),
-        ),
-        const SizedBox(height: 14),
-        TextField(
-          controller: _tagsController,
-          decoration: const InputDecoration(
-            labelText: 'Tags',
-            hintText: 'comma separated',
-            border: OutlineInputBorder(),
-            isDense: true,
-          ),
-          onSubmitted: (_) => _saveTask(task),
-        ),
-        const SizedBox(height: 24),
-        Text('Checklist', style: Theme.of(context).textTheme.titleMedium),
-        const SizedBox(height: 8),
-        for (final item in detail.checklist)
-          CheckboxListTile(
-            value: item.completed,
-            dense: true,
-            contentPadding: EdgeInsets.zero,
-            controlAffinity: ListTileControlAffinity.leading,
-            title: Text(
-              item.title,
-              style: TextStyle(
-                decoration: item.completed ? TextDecoration.lineThrough : null,
-              ),
-            ),
-            onChanged: (value) =>
-                widget.appState.setChecklistCompleted(item.id, value ?? false),
-          ),
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: TextField(
-                controller: _checklistController,
-                decoration: const InputDecoration(
-                  hintText: 'Add checklist item',
-                  border: OutlineInputBorder(),
-                  isDense: true,
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: <Widget>[
+              SizedBox(
+                width: 180,
+                child: DropdownButtonFormField<TaskBucket>(
+                  key: ValueKey<String>('bucket-$_taskId'),
+                  initialValue: _bucket,
+                  decoration: const InputDecoration(
+                    labelText: 'List',
+                    border: OutlineInputBorder(),
+                    isDense: true,
+                  ),
+                  items: TaskBucket.values
+                      .map(
+                        (bucket) => DropdownMenuItem<TaskBucket>(
+                          value: bucket,
+                          child: Text(bucketLabel(bucket)),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    if (value == null) return;
+                    setState(() => _bucket = value);
+                  },
                 ),
-                onSubmitted: (_) => _addChecklistItem(),
               ),
-            ),
-            const SizedBox(width: 8),
-            IconButton.filledTonal(
-              tooltip: 'Add checklist item',
-              onPressed: _addChecklistItem,
-              icon: const Icon(Icons.add_rounded),
-            ),
-          ],
-        ),
-        const SizedBox(height: 24),
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: Text(
-                'Time',
-                style: Theme.of(context).textTheme.titleMedium,
+              SizedBox(
+                width: 220,
+                child: DropdownButtonFormField<int?>(
+                  key: ValueKey<String>('project-$_taskId'),
+                  initialValue: _projectId,
+                  decoration: const InputDecoration(
+                    labelText: 'Project',
+                    border: OutlineInputBorder(),
+                    isDense: true,
+                  ),
+                  items: <DropdownMenuItem<int?>>[
+                    const DropdownMenuItem<int?>(child: Text('No project')),
+                    for (final project in widget.appState.projects)
+                      DropdownMenuItem<int?>(
+                        value: project.id,
+                        child: Text(project.name),
+                      ),
+                  ],
+                  onChanged: (value) => setState(() => _projectId = value),
+                ),
               ),
-            ),
-            Text(
-              formatDuration(task.totalLoggedMinutes),
-              style: TextStyle(
-                color: colorScheme.primary,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
+              SizedBox(
+                width: 220,
+                child: DropdownButtonFormField<int?>(
+                  key: ValueKey<String>('area-$_taskId'),
+                  initialValue: _areaId,
+                  decoration: const InputDecoration(
+                    labelText: 'Area',
+                    border: OutlineInputBorder(),
+                    isDense: true,
+                  ),
+                  items: <DropdownMenuItem<int?>>[
+                    const DropdownMenuItem<int?>(child: Text('No area')),
+                    for (final area in widget.appState.areas)
+                      DropdownMenuItem<int?>(
+                        value: area.id,
+                        child: Text(area.name),
+                      ),
+                  ],
+                  onChanged: (value) => setState(() => _areaId = value),
+                ),
               ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          Row(
+            children: <Widget>[
+              OutlinedButton.icon(
+                onPressed: _pickDueDate,
+                icon: const Icon(Icons.event_outlined),
+                label: Text(
+                  _dueDate == null ? 'No due date' : formatDate(_dueDate!),
+                ),
+              ),
+              if (_dueDate != null) ...<Widget>[
+                const SizedBox(width: 8),
+                TextButton(
+                  onPressed: () => setState(() => _dueDate = null),
+                  child: const Text('Clear date'),
+                ),
+              ],
+            ],
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _notesController,
+            minLines: 5,
+            maxLines: 10,
+            style: const TextStyle(fontSize: 14.5, height: 1.45),
+            decoration: const InputDecoration(
+              hintText: 'Notes',
+              alignLabelWithHint: true,
+              border: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              filled: false,
+              contentPadding: EdgeInsets.symmetric(vertical: 8),
             ),
-            const SizedBox(width: 10),
-            IconButton.filled(
-              tooltip: 'Log time',
-              onPressed: () => _showTimeLogDialog(context, widget.appState),
-              icon: const Icon(Icons.add_rounded),
+          ),
+          const SizedBox(height: 14),
+          TextField(
+            controller: _tagsController,
+            decoration: const InputDecoration(
+              hintText: 'comma separated',
+              isDense: true,
             ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        if (detail.timeEntries.isEmpty)
-          Text(
-            'No time logged.',
-            style: TextStyle(color: colorScheme.onSurfaceVariant),
-          )
-        else
-          for (final entry in detail.timeEntries)
-            ListTile(
-              contentPadding: EdgeInsets.zero,
+            onSubmitted: (_) => _saveTask(task),
+          ),
+          const SizedBox(height: 24),
+          Text('Checklist', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          for (final item in detail.checklist)
+            CheckboxListTile(
+              value: item.completed,
               dense: true,
-              leading: const Icon(Icons.schedule_outlined),
-              title: Text(formatDuration(entry.minutes)),
-              subtitle: Text(
-                entry.note.isEmpty
-                    ? '${formatDate(entry.loggedAt)} ${formatTime(entry.loggedAt)}'
-                    : '${formatDate(entry.loggedAt)} ${formatTime(entry.loggedAt)} · ${entry.note}',
+              contentPadding: EdgeInsets.zero,
+              controlAffinity: ListTileControlAffinity.leading,
+              title: Text(
+                item.title,
+                style: TextStyle(
+                  decoration: item.completed
+                      ? TextDecoration.lineThrough
+                      : null,
+                ),
               ),
-              trailing: const Icon(Icons.chevron_right_rounded),
-              onTap: () => _editTimeEntry(entry),
+              onChanged: (value) => widget.appState.setChecklistCompleted(
+                item.id,
+                value ?? false,
+              ),
             ),
-      ],
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: TextField(
+                  controller: _checklistController,
+                  decoration: const InputDecoration(
+                    hintText: 'Add checklist item',
+                    border: OutlineInputBorder(),
+                    isDense: true,
+                  ),
+                  onSubmitted: (_) => _addChecklistItem(),
+                ),
+              ),
+              const SizedBox(width: 8),
+              IconButton.filledTonal(
+                tooltip: 'Add checklist item',
+                onPressed: _addChecklistItem,
+                icon: const Icon(Icons.add_rounded),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Text(
+                  'Time',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              Text(
+                formatDuration(task.totalLoggedMinutes),
+                style: TextStyle(
+                  color: colorScheme.primary,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(width: 10),
+              IconButton.filled(
+                tooltip: 'Log time',
+                onPressed: () => _showTimeLogDialog(context, widget.appState),
+                icon: const Icon(Icons.add_rounded),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          if (detail.timeEntries.isEmpty)
+            Text(
+              'No time logged.',
+              style: TextStyle(color: colorScheme.onSurfaceVariant),
+            )
+          else
+            for (final entry in detail.timeEntries)
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                dense: true,
+                leading: const Icon(Icons.schedule_outlined),
+                title: Text(formatDuration(entry.minutes)),
+                subtitle: Text(
+                  entry.note.isEmpty
+                      ? '${formatDate(entry.loggedAt)} ${formatTime(entry.loggedAt)}'
+                      : '${formatDate(entry.loggedAt)} ${formatTime(entry.loggedAt)} · ${entry.note}',
+                ),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => _editTimeEntry(entry),
+              ),
+        ],
+      ),
     );
   }
 
@@ -1141,7 +1394,7 @@ class _ReportPaneState extends State<_ReportPane> {
   }
 }
 
-class _SectionTile extends StatelessWidget {
+class _SectionTile extends StatefulWidget {
   const _SectionTile({
     required this.icon,
     required this.label,
@@ -1155,15 +1408,50 @@ class _SectionTile extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
+  State<_SectionTile> createState() => _SectionTileState();
+}
+
+class _SectionTileState extends State<_SectionTile> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return ListTile(
-      dense: true,
-      selected: selected,
-      selectedTileColor: Theme.of(context).colorScheme.primaryContainer,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      leading: Icon(icon, size: 20),
-      title: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis),
-      onTap: onTap,
+    final selected = widget.selected;
+    final foreground = selected ? _textPrimary : _textSecondary;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: AnimatedContainer(
+        duration: _motion,
+        curve: _curve,
+        margin: const EdgeInsets.symmetric(vertical: 1),
+        decoration: BoxDecoration(
+          color: selected
+              ? _selectedSurface
+              : _hovered
+              ? Colors.white.withValues(alpha: 0.42)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: ListTile(
+          dense: true,
+          minLeadingWidth: 20,
+          horizontalTitleGap: 10,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          leading: Icon(widget.icon, size: 18, color: foreground),
+          title: Text(
+            widget.label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: foreground,
+              fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            ),
+          ),
+          onTap: widget.onTap,
+        ),
+      ),
     );
   }
 }

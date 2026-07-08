@@ -52,6 +52,9 @@ void main() {
 
     try {
       final projectId = await database.createProject('Launch');
+      await database.updateProject(Project(id: projectId, name: 'Launch Plan'));
+      expect((await database.projects()).single.name, 'Launch Plan');
+
       final taskId = await database.createTask(
         title: 'Prepare supplier notes',
         bucket: TaskBucket.today,

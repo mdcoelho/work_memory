@@ -129,6 +129,16 @@ class AppState extends ChangeNotifier {
     await selectProject(id);
   }
 
+  Future<void> updateProjectName(Project project, String name) async {
+    final cleanName = name.trim();
+    if (cleanName.isEmpty || cleanName == project.name) return;
+
+    await _database.updateProject(
+      Project(id: project.id, name: cleanName, areaId: project.areaId),
+    );
+    await refreshAll(showLoading: false);
+  }
+
   Future<void> createArea(String name) async {
     final cleanName = name.trim();
     if (cleanName.isEmpty) return;

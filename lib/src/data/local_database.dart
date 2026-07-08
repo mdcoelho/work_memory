@@ -196,6 +196,15 @@ class LocalDatabase {
     });
   }
 
+  Future<void> updateProject(Project project) {
+    return _db.update(
+      'projects',
+      <String, Object?>{'name': project.name, 'area_id': project.areaId},
+      where: 'id = ?',
+      whereArgs: <Object?>[project.id],
+    );
+  }
+
   Future<int> createArea(String name) {
     return _db.insert('areas', <String, Object?>{'name': name});
   }
